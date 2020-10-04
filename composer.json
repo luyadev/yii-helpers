@@ -1,0 +1,39 @@
+{
+    "name": "luyadev/luya-helpers",
+    "description": "Static helper methods in addition to the Yii Framework.",
+    "type": "library",
+    "require": {
+        "yiisoft/yii2": "^2.0"
+    },
+    "require-dev": {
+        "luyadev/luya-testsuite": "^1.2"
+    },
+    "autoload" : {
+        "psr-4": {
+            "luya\\helpers\\" : "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "luya\\helpers\\tests\\" : "tests/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Basil Suter",
+            "email": "git@nadar.io"
+        }
+    ],
+    "config": {
+        "fxp-asset": {
+            "enabled": false
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
