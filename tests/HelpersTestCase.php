@@ -10,8 +10,24 @@ class HelpersTestCase extends BaseTestSuite
     public function getConfigArray()
     {
         return [
-           'id' => 'helpers',
-           'basePath' => dirname(__DIR__),
+            'id' => 'helpers',
+            'basePath' => dirname(__DIR__),
+            'aliases' => [
+                '@runtime' => dirname(__DIR__) . '/data/runtime',
+                '@luyatests' => dirname(__DIR__) . '/../',
+            ],
+            'components' => [
+                'sqllite' => [
+                    'class' => 'yii\db\Connection',
+                    'dsn' => 'sqlite::memory:',
+                ],
+                'composition' => [
+                    'hidden' => false,
+                ],
+                'request' => [
+                    'forceWebRequest' => true,
+                ],
+            ]
         ];
     }
     

@@ -60,7 +60,7 @@ class FileHelperTest extends HelpersTestCase
     public function testGetHashFile()
     {
         $this->assertSame(false, FileHelper::md5sum('notexists.jpg'));
-        $this->assertSame('7dff5cc5a1d8f04004b4a0075d3eeeae', FileHelper::md5sum(__DIR__ . '/../../data/hashfile.txt'));
+        $this->assertSame('7dff5cc5a1d8f04004b4a0075d3eeeae', FileHelper::md5sum('tests/data/hashfile.txt'));
     }
     
     public function testWriteFile()
