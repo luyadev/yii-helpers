@@ -3,6 +3,7 @@
 namespace luya\helpers;
 
 use Yii;
+use yii\helpers\BaseUrl;
 
 /**
  * Helper methods when dealing with URLs and Links.
@@ -23,7 +24,7 @@ use Yii;
  * @author Basil Suter <basil@nadar.io>
  * @since 1.0.0
  */
-class Url extends \yii\helpers\BaseUrl
+class Url extends BaseUrl
 {
     /**
      * Add a trailing slash to an url if there is no trailing slash at the end of the url.

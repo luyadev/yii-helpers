@@ -41,6 +41,6 @@ class HelpersTestCase extends BaseTestSuite
     
     public function bootApplication(Boot $boot)
     {
-         $boot->applicationWeb();
+        $boot->applicationWeb();
     }
 }
