@@ -1,7 +1,8 @@
 <?php
 
-namespace luya\helpers\tests;
+namespace luya\helpers\tests\helpers;
 
+use luya\helpers\tests\HelpersTestCase;
 use Yii;
 use luya\helpers\Url;
 

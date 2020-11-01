@@ -1,8 +1,9 @@
 <?php
 
-namespace luya\helpers\tests;
+namespace luya\helpers\tests\helpers;
 
 use luya\helpers\StringHelper;
+use luya\helpers\tests\HelpersTestCase;
 
 class StringHelperTest extends HelpersTestCase
 {

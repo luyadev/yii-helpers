@@ -1,9 +1,9 @@
 <?php
 
-namespace luya\helpers\tests;
+namespace luya\helpers\tests\helpers;
 
-use luyatests\LuyaWebTestCase;
 use luya\helpers\Json;
+use luya\helpers\tests\HelpersTestCase;
 
 class JsonTest extends HelpersTestCase
 {

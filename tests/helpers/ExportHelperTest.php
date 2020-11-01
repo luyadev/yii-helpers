@@ -1,10 +1,10 @@
 <?php
 
-namespace luya\helpers\tests;
+namespace luya\helpers\tests\helpers;
 
 use Yii;
-use luyatests\LuyaWebTestCase;
 use luya\helpers\ExportHelper;
+use luya\helpers\tests\HelpersTestCase;
 use yii\db\ActiveRecord;
 
 class CsvModelStub extends ActiveRecord

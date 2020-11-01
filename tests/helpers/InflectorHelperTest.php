@@ -1,9 +1,10 @@
 <?php
 
-namespace luya\helpers\tests;
+namespace luya\helpers\tests\helpers;
 
 use Yii;
 use luya\helpers\Inflector;
+use luya\helpers\tests\HelpersTestCase;
 
 class InflectorHelperTest extends HelpersTestCase
 {

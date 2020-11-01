@@ -1,9 +1,9 @@
 <?php
 
-namespace luya\helpers\tests;
+namespace luya\helpers\tests\helpers;
 
+use luya\helpers\tests\HelpersTestCase;
 use Yii;
-use luyatests\LuyaWebTestCase;
 use luya\helpers\ZipHelper;
 
 class ZipHelperTest extends HelpersTestCase

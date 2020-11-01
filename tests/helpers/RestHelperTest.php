@@ -1,10 +1,10 @@
 <?php
 
-namespace luya\helpers\tests;
+namespace luya\helpers\tests\helpers;
 
-use luyatests\LuyaWebTestCase;
 use yii\base\DynamicModel;
 use luya\helpers\RestHelper;
+use luya\helpers\tests\HelpersTestCase;
 
 class RestHelperTest extends HelpersTestCase
 {
