@@ -72,7 +72,6 @@ class FileHelperTest extends HelpersTestCase
     
     public function testGetFileContent()
     {
-        var_dump(Yii::getAlias('@runtime'));
         $this->assertSame('Hello World', FileHelper::getFileContent('@runtime/temp.txt'));
         
         $this->assertFalse(FileHelper::getFileContent('doesNotExist.txt'));
