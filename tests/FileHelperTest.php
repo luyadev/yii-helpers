@@ -4,6 +4,7 @@ namespace luya\helpers\tests;
 
 use luyatests\LuyaWebTestCase;
 use luya\helpers\FileHelper;
+use Yii;
 
 class FileHelperTest extends HelpersTestCase
 {
@@ -71,6 +72,7 @@ class FileHelperTest extends HelpersTestCase
     
     public function testGetFileContent()
     {
+        var_dump(Yii::getAlias('@runtime'));
         $this->assertSame('Hello World', FileHelper::getFileContent('@runtime/temp.txt'));
         
         $this->assertFalse(FileHelper::getFileContent('doesNotExist.txt'));
