@@ -21,7 +21,7 @@ class HelpersTestCase extends BaseTestSuite
             'id' => 'helpers',
             'basePath' => dirname(__DIR__),
             'aliases' => [
-                '@runtime' => 'tests/data/runtime',
+                '@runtime' => dirname(__DIR__) . '/tests/data/runtime',
                 '@luyatests' => dirname(__DIR__) . '/../',
             ],
             'components' => [
