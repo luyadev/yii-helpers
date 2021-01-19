@@ -3,7 +3,7 @@ name: Tests
 on: [push, pull_request]
 
 env:
-  DEFAULT_COMPOSER_FLAGS: "--prefer-dist --no-interaction --ignore-platform-reqs"
+  DEFAULT_COMPOSER_FLAGS: "--prefer-dist --no-interaction"
   PHPUNIT_EXCLUDE_GROUP: mssql,oci,wincache,xcache,zenddata,cubrid
   CC_TEST_REPORTER_ID: b162d1ed5bbfd616d20e8c81d1d1c4738b88e3e00d5640de02d56a52dad28bd3
 jobs:
