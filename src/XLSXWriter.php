@@ -99,14 +99,14 @@ class XLSXWriter
     public function writeToStdOut()
     {
         $temp_file = $this->tempFilename();
-        self::writeToFile($temp_file);
+        $this->writeToFile($temp_file);
         readfile($temp_file);
     }
 
     public function writeToString()
     {
         $temp_file = $this->tempFilename();
-        self::writeToFile($temp_file);
+        $this->writeToFile($temp_file);
         $string = file_get_contents($temp_file);
         return $string;
     }
@@ -114,7 +114,7 @@ class XLSXWriter
     public function writeToFile($filename)
     {
         foreach ($this->sheets as $sheet_name => $sheet) {
-            self::finalizeSheet($sheet_name);//making sure all footers have been written
+            $this->finalizeSheet($sheet_name);//making sure all footers have been written
         }
 
         if (file_exists($filename)) {
@@ -136,25 +136,25 @@ class XLSXWriter
         }
 
         $zip->addEmptyDir("docProps/");
-        $zip->addFromString("docProps/app.xml", self::buildAppXML());
-        $zip->addFromString("docProps/core.xml", self::buildCoreXML());
+        $zip->addFromString("docProps/app.xml", $this->buildAppXML());
+        $zip->addFromString("docProps/core.xml", $this->buildCoreXML());
 
         $zip->addEmptyDir("_rels/");
-        $zip->addFromString("_rels/.rels", self::buildRelationshipsXML());
+        $zip->addFromString("_rels/.rels", $this->buildRelationshipsXML());
 
         $zip->addEmptyDir("xl/worksheets/");
         foreach ($this->sheets as $sheet) {
             $zip->addFile($sheet->filename, "xl/worksheets/" . $sheet->xmlname);
         }
-        $zip->addFromString("xl/workbook.xml", self::buildWorkbookXML());
+        $zip->addFromString("xl/workbook.xml", $this->buildWorkbookXML());
         $zip->addFile(
             $this->writeStylesXML(),
             "xl/styles.xml"
         );  //$zip->addFromString("xl/styles.xml"           , self::buildStylesXML() );
-        $zip->addFromString("[Content_Types].xml", self::buildContentTypesXML());
+        $zip->addFromString("[Content_Types].xml", $this->buildContentTypesXML());
 
         $zip->addEmptyDir("xl/_rels/");
-        $zip->addFromString("xl/_rels/workbook.xml.rels", self::buildWorkbookRelsXML());
+        $zip->addFromString("xl/_rels/workbook.xml.rels", $this->buildWorkbookRelsXML());
         $zip->close();
     }
 
@@ -306,7 +306,7 @@ class XLSXWriter
         $auto_filter = isset($col_options['auto_filter']) ? intval($col_options['auto_filter']) : false;
         $freeze_rows = isset($col_options['freeze_rows']) ? intval($col_options['freeze_rows']) : false;
         $freeze_columns = isset($col_options['freeze_columns']) ? intval($col_options['freeze_columns']) : false;
-        self::initializeSheet($sheet_name, $col_widths, $auto_filter, $freeze_rows, $freeze_columns);
+        $this->initializeSheet($sheet_name, $col_widths, $auto_filter, $freeze_rows, $freeze_columns);
         $sheet = &$this->sheets[$sheet_name];
         $sheet->columns = $this->initializeColumnTypes($header_types);
         if (!$suppress_row) {
@@ -423,7 +423,7 @@ class XLSXWriter
             return;
         }
 
-        self::initializeSheet($sheet_name);
+        $this->initializeSheet($sheet_name);
         $sheet = &$this->sheets[$sheet_name];
 
         $startCell = self::xlsCell($start_cell_row, $start_cell_column);
@@ -456,7 +456,7 @@ class XLSXWriter
 
         if (!is_scalar($value) || $value === '') { //objects, array, empty
             $file->write('<c r="' . $cell_name . '" s="' . $cell_style_idx . '"/>');
-        } elseif (is_string($value) && $value{0} == '=') {
+        } elseif (is_string($value) && $value[0] == '=') {
             $file->write('<c r="' . $cell_name . '" s="' . $cell_style_idx . '" t="s"><f>' . self::xmlspecialchars($value) . '</f></c>');
         } elseif ($num_format_type == 'n_date') {
             $file->write('<c r="' . $cell_name . '" s="' . $cell_style_idx . '" t="n"><v>' . intval(self::convert_date_time($value)) . '</v></c>');
@@ -585,7 +585,7 @@ class XLSXWriter
 
     protected function writeStylesXML()
     {
-        $r = self::styleFontIndexes();
+        $r = $this->styleFontIndexes();
         $fills = $r['fills'];
         $fonts = $r['fonts'];
         $borders = $r['borders'];
