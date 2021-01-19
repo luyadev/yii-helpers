@@ -6,7 +6,7 @@
         "yiisoft/yii2": "^2.0"
     },
     "require-dev": {
-        "luyadev/luya-testsuite": "^1.2"
+        "luyadev/luya-testsuite": "^2.0"
     },
     "autoload" : {
         "psr-4": {

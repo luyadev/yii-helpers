@@ -42,7 +42,7 @@ class StringHelper extends BaseStringHelper
     
     /**
      * String Wildcard Check.
-     *
+     * 
      * Checks whether a strings starts with the wildcard symbole and compares the string before the wild card symbol *
      * with the string provided, if there is NO wildcard symbold it always return false.
      *
@@ -66,7 +66,7 @@ class StringHelper extends BaseStringHelper
 
     /**
      * See if filter conditions match the given value.
-     *
+     * 
      * Example filter conditions:
      *
      * + `cms_*` matches everything starting with "cms_".
@@ -76,12 +76,12 @@ class StringHelper extends BaseStringHelper
      * + `cms_*,!admin_*` matches all start with "cms_" but not start with "admin_"
      *
      * Only first match is relevant:
-     *
+     * 
      * + "cms_*,!admin_*,admin_*" include all cms_* tables but exclude all admin_* tables (last match has no effect)
      * + "cms_*,admin_*,!admin_*" include all cms_* and admin_* tables (last match has no effect)
-     *
+     * 
      * Example using condition string:
-     *
+     * 
      * ```php
      * filterMatch('hello', 'he*'); // true
      * filterMatch('hello', 'ho,he*'); // true
@@ -346,11 +346,11 @@ class StringHelper extends BaseStringHelper
 
     /**
      * Check whether a value is numeric or not.
-     *
+     * 
      * There are situations where is_numeric does not provide the desried result,
      * like for example `is_numeric('3e30')` would return true, as e can be considered
      * as exponential operator.
-     *
+     * 
      * Therfore this function checks with regex whether values or 0-9 if strict is enabled,
      * which is default behavior.
      *
@@ -371,26 +371,26 @@ class StringHelper extends BaseStringHelper
 
         if ($strict) {
             return preg_match('/^[0-9]+$/', $value) == 1 ? true : false;
-        }
+        }    
 
         return is_numeric($value);
     }
 
     /**
      * Templating a string with Variables
-     *
+     * 
      * The variables should be declared as `{{username}}` while the variables array key should contain `username`.
-     *
+     * 
      * Usage example:
-     *
+     * 
      * ```php
      * $content = StringHelper::template('<p>{{ name }}</p>', ['name' => 'John']);
-     *
+     * 
      * // output: <p>John</p>
      * ```
-     *
+     * 
      * If a variable is not found, the original curly bracktes will be returned.
-     *
+     * 
      * @param string $template The template to parse. The template may contain double curly brackets variables.
      * @param array $variables The variables which should be available in the template.
      * @param boolean $removeEmpty Whether variables in double curly brackets should be removed event the have not be assigned by $variables array.
@@ -418,12 +418,12 @@ class StringHelper extends BaseStringHelper
 
     /**
      * Convert a text with different seperators to an array.
-     *
+     * 
      * Its very common to use seperators when working with user input, for example a list of domains seperated by commas. Therefore
      * this function will use common seperators the generate an array from a text string.
-     *
+     * 
      * Explodes the string by: "Newline", ";", ","
-     *
+     * 
      * + newline
      * + comma
      * + point comma
