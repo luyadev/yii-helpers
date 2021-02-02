@@ -101,7 +101,6 @@ class Url extends BaseUrl
      *
      * @param string $url The url to extract
      * @return string returns the url without protocol or www. subdomain
-     * @since 1.0.20
      */
     public static function cleanHost($url)
     {
@@ -114,7 +113,6 @@ class Url extends BaseUrl
      *
      * @param string $url The url to extract
      * @return string Returns only the domain from the url.
-     * @since 1.0.20
      */
     public static function domain($url)
     {
@@ -129,7 +127,6 @@ class Url extends BaseUrl
      * @param string|array $append A string with url fragments or an array which will be processed by http_build_query.
      * @param boolean $scheme Add full path schema to the url, by default false. Otherwise absolute paths are used (including domain).
      * @return string
-     * @since 1.0.25
      */
     public static function appendQuery($append, $scheme = false)
     {
@@ -144,7 +141,6 @@ class Url extends BaseUrl
      * @param string $url The url where the data should be appended.
      * @param string|array $append The query param to append, if an array is given http_build_query() will taken to build the query string.
      * @return string Returns the url with appended query string
-     * @since 1.0.25
      */
     public static function appendQueryToUrl($url, $append)
     {

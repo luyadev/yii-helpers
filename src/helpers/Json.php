@@ -12,7 +12,7 @@ use yii\helpers\BaseJson;
  * + {{luya\yii\helpers\Json::isJson()}}
  *
  * @author Basil Suter <basil@nadar.io>
- * @since 1.0.3
+ * @since 1.0.0
  */
 class Json extends BaseJson
 {

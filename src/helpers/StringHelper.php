@@ -92,7 +92,6 @@ class StringHelper extends BaseStringHelper
      * @param array|string $filters An array of filter conditions, if a string is given he will be exploded by commas.
      * @param boolean $caseSensitive Whether to match value even when lower/upper case is not correct/same.
      * @return bool Returns true if one of the given filter conditions matches.
-     * @since 1.3.0
      */
     public static function filterMatch($value, $conditions, $caseSensitive = true)
     {
@@ -238,7 +237,6 @@ class StringHelper extends BaseStringHelper
      * @param array $options Optional arguments to provide for minification:
      * - comments: boolean, where html comments should be removed or not. defaults to false
      * @return mixed Returns the minified content.
-     * @since 1.0.7
      */
     public static function minify($content, array $options = [])
     {
@@ -267,7 +265,6 @@ class StringHelper extends BaseStringHelper
      * @param integer $length The amount of the chars to cut on the left and right side from the word.
      * @param string $affix The chars which should be used for prefix and suffix when string is cuted.
      * @param boolean $caseSensitive Whether the search word in the string even when lower/upper case is not correct.
-     * @since 1.0.12
      */
     public static function truncateMiddle($content, $word, $length, $affix = '..', $caseSensitive = false)
     {
@@ -307,7 +304,6 @@ class StringHelper extends BaseStringHelper
      * @param string $content The content to find the word.
      * @param string $word The word to find within the content.
      * @param string $markup The markup used wrap the word to highlight.
-     * @since 1.0.12
      */
     public static function highlightWord($content, $word, $markup = '<b>%s</b>')
     {
@@ -336,7 +332,6 @@ class StringHelper extends BaseStringHelper
      *
      * @param string $string The string to split into an array
      * @param integer $length The length of the chars to cut.
-     * @since 1.0.12
      * @see https://www.php.net/manual/de/function.str-split.php#115703
      */
     public static function mb_str_split($string, $length = 1)
@@ -357,7 +352,6 @@ class StringHelper extends BaseStringHelper
      * @param mixed $value The value to check.
      * @param boolean $strict
      * @return boolean
-     * @since 1.2.0
      */
     public static function isNummeric($value, $strict = true)
     {
@@ -395,7 +389,6 @@ class StringHelper extends BaseStringHelper
      * @param array $variables The variables which should be available in the template.
      * @param boolean $removeEmpty Whether variables in double curly brackets should be removed event the have not be assigned by $variables array.
      * @return string
-     * @since 1.5.0
      */
     public static function template($template, array $variables = [], $removeEmpty = false)
     {
@@ -430,7 +423,6 @@ class StringHelper extends BaseStringHelper
      *
      * @param string $text A text which contains a list of items seperated by seperators like commas.
      * @return array
-     * @since 1.7.1
      */
     public static function textList($text, array $seperators = [PHP_EOL, "\n", "\r", "\n\r", ";", ","])
     {

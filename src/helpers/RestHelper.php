@@ -9,7 +9,7 @@ use yii\base\InvalidParamException;
 /**
  * Rest API Helper.
  *
- * @since 1.0.20
+ * @since 1.0.0
  * @author Basil Suter <basil@nadar.io>
  */
 class RestHelper
@@ -82,7 +82,6 @@ class RestHelper
      * ```
      * @param array $errors Provide an array with messages. Where key is the field and value the message.
      * @return array Returns an array with field and message keys for each item.
-     * @since 1.0.3
      */
     public static function sendArrayError(array $errors)
     {

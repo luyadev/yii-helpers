@@ -20,7 +20,7 @@ class ExportHelper
      * @param array|QueryInterface $input The data to export into a csv
      * @param array $keys Defines which keys should be packed into the generated CSV. The defined keys does not change the sort behavior of the generated csv.
      * @param string $header Whether the column name should be set as header inside the csv or not.
-     * @param array $options Options {@since 1.8.0}
+     * @param array $options Options
      * + `sort`: boolean, whether they row should be sorted by its keys, default is true.
      * @return string The generated CSV as string.
      */
@@ -39,11 +39,10 @@ class ExportHelper
      * @param array|QueryInterface $input
      * @param array $keys Defines which keys should be packed into the generated xlsx. The defined keys does not change the sort behavior of the generated xls.
      * @param bool $header
-     * @param array $options Options {@since 1.8.0}
+     * @param array $options Options
      * + `sort`: boolean, whether they row should be sorted by its keys, default is true.
      * @return mixed
      * @throws Exception
-     * @since 1.0.4
      */
     public static function xlsx($input, array $keys = [], $header = true, array $options = [])
     {
@@ -62,7 +61,6 @@ class ExportHelper
      *
      * @param array|QueryInterface $input
      * @return array
-     * @since 1.0.4
      */
     protected static function transformInput($input)
     {
@@ -80,11 +78,10 @@ class ExportHelper
      * @param string $delimiter
      * @param array $keys
      * @param bool $generateHeader
-     * @param array $options Options {@since 1.8.0}
+     * @param array $options Options
      * + `sort`: boolean, whether they row should be sorted by its keys, default is true.
      * @return array
      * @throws Exception
-     * @since 1.0.4
      */
     protected static function generateContentArray($contentRows, array $keys, $generateHeader = true, $options  = [])
     {
@@ -153,7 +150,6 @@ class ExportHelper
      * @param array $input
      * @param string $delimiter
      * @return null|string
-     * @since 1.0.4
      */
     protected static function generateOutputString(array $input, $delimiter)
     {
@@ -172,7 +168,6 @@ class ExportHelper
      * @param string $delimiter
      * @param string $enclose
      * @return string
-     * @since 1.0.4
      */
     protected static function generateRow(array $row, $delimiter, $enclose)
     {

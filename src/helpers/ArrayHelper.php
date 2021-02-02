@@ -24,7 +24,6 @@ class ArrayHelper extends BaseArrayHelper
 {
     /**
      * @var array An array with sensitive keys which are used if no keys will be passed to {{luya\yii\helpers\ArrayHelper::coverSensitiveValues()}}.
-     * @since 1.0.10
      */
     public static $sensitiveDefaultKeys = ['password', 'pwd', 'pass', 'passwort', 'pw', 'token', 'hash', 'authorization', 'auth'];
     
@@ -54,7 +53,6 @@ class ArrayHelper extends BaseArrayHelper
      *
      * @param array $data The input data to cover given sensitive key values. `['username' => 'foo', 'password' => 'bar']`.
      * @param array $key The keys which can contain sensitive data inside the $data array. `['password', 'pwd', 'pass']` if no keys provided the {{luya\yii\helpers\ArrayHelper::$sensitiveDefaultKeys}} is used.
-     * @since 1.0.6
      */
     public static function coverSensitiveValues(array $data, array $keys = [])
     {
@@ -152,7 +150,7 @@ class ArrayHelper extends BaseArrayHelper
      * @param array $array The multidimensional array keys.
      * @param string $searchText The text you where search inside the rows.
      * @param boolean $sensitive Whether to use strict sensitive search (true) or case insenstivie search (false).
-     * @param array $keys A list of array keys which should be taken to search in, if empty or not provided it will lookup all array keys by default. {@since 1.0.24}
+     * @param array $keys A list of array keys which should be taken to search in, if empty or not provided it will lookup all array keys by default.
      * @return array The modified array depending on the search result hits.
      */
     public static function search(array $array, $searchText, $sensitive = false, array $keys = [])
@@ -307,7 +305,6 @@ class ArrayHelper extends BaseArrayHelper
      *
      * @param array $array The array to combine.
      * @return array
-     * @since 1.0.24
      */
     public static function combine(array $array)
     {
