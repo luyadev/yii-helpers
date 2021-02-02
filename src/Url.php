@@ -1,6 +1,6 @@
 <?php
 
-namespace luya\helpers;
+namespace luya\yii\helpers;
 
 use Yii;
 use yii\helpers\BaseUrl;
@@ -10,10 +10,10 @@ use yii\helpers\BaseUrl;
  *
  * Extends the {{yii\helpers\BaseUrl}} class by some usefull functions like:
  *
- * + {{luya\helpers\Url::trailing()}}
- * + {{luya\helpers\Url::toInternal()}}
- * + {{luya\helpers\Url::toAjax()}}
- * + {{luya\helpers\Url::ensureHttp()}}
+ * + {{luya\yii\helpers\Url::trailing()}}
+ * + {{luya\yii\helpers\Url::toInternal()}}
+ * + {{luya\yii\helpers\Url::toAjax()}}
+ * + {{luya\yii\helpers\Url::ensureHttp()}}
  *
  * An example of create an URL based on Route in the UrlManager:
  *
@@ -124,7 +124,7 @@ class Url extends BaseUrl
     /**
      * Append a query to the current url.
      *
-     * See {{luya\helpers\Url::appendToUrl()}}
+     * See {{luya\yii\helpers\Url::appendToUrl()}}
      *
      * @param string|array $append A string with url fragments or an array which will be processed by http_build_query.
      * @param boolean $scheme Add full path schema to the url, by default false. Otherwise absolute paths are used (including domain).

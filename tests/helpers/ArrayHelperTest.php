@@ -1,9 +1,9 @@
 <?php
 
-namespace luya\helpers\tests\helpers;
+namespace luya\yii\helpers\tests\helpers;
 
-use luya\helpers\ArrayHelper;
-use luya\helpers\tests\HelpersTestCase;
+use luya\yii\helpers\ArrayHelper;
+use luya\yii\helpers\tests\HelpersTestCase;
 
 class ArrayHelperTest extends HelpersTestCase
 {

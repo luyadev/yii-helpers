@@ -1,6 +1,6 @@
 <?php
 
-namespace luya\helpers;
+namespace luya\yii\helpers;
 
 use yii\helpers\BaseJson;
 
@@ -9,7 +9,7 @@ use yii\helpers\BaseJson;
  *
  * Extends the {{yii\helpers\Json}} class by some usefull functions like:
  *
- * + {{luya\helpers\Json::isJson()}}
+ * + {{luya\yii\helpers\Json::isJson()}}
  *
  * @author Basil Suter <basil@nadar.io>
  * @since 1.0.3

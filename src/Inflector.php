@@ -1,6 +1,6 @@
 <?php
 
-namespace luya\helpers;
+namespace luya\yii\helpers;
 
 use yii\helpers\BaseInflector;
 
@@ -9,7 +9,7 @@ use yii\helpers\BaseInflector;
  *
  * Extends the {{yii\helpers\BaseInflector}} class by:
  *
- * + {{luya\helpers\Inflector::slug()}}
+ * + {{luya\yii\helpers\Inflector::slug()}}
  *
  * @author Martin Petrasch <martin.petrasch@zephir.ch>
  * @since 1.0.0

@@ -1,9 +1,9 @@
 <?php
 
-namespace luya\helpers\tests\helpers;
+namespace luya\yii\helpers\tests\helpers;
 
-use luya\helpers\FileHelper;
-use luya\helpers\tests\HelpersTestCase;
+use luya\yii\helpers\FileHelper;
+use luya\yii\helpers\tests\HelpersTestCase;
 use Yii;
 
 class FileHelperTest extends HelpersTestCase

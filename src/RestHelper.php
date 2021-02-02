@@ -1,6 +1,6 @@
 <?php
 
-namespace luya\helpers;
+namespace luya\yii\helpers;
 
 use Yii;
 use yii\base\Model;

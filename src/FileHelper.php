@@ -1,6 +1,6 @@
 <?php
 
-namespace luya\helpers;
+namespace luya\yii\helpers;
 
 use Yii;
 use Exception;
@@ -10,12 +10,12 @@ use Exception;
  *
  * Extends the {{yii\helpers\FileHelper}} class by some usefull functions like:
  *
- * + {{luya\helpers\FileHelper::humanReadableFilesize()}}
- * + {{luya\helpers\FileHelper::ensureExtension()}}
- * + {{luya\helpers\FileHelper::md5sum()}}
- * + {{luya\helpers\FileHelper::writeFile()}}
- * + {{luya\helpers\FileHelper::getFileContent()}}
- * + {{luya\helpers\FileHelper::unlink()}}
+ * + {{luya\yii\helpers\FileHelper::humanReadableFilesize()}}
+ * + {{luya\yii\helpers\FileHelper::ensureExtension()}}
+ * + {{luya\yii\helpers\FileHelper::md5sum()}}
+ * + {{luya\yii\helpers\FileHelper::writeFile()}}
+ * + {{luya\yii\helpers\FileHelper::getFileContent()}}
+ * + {{luya\yii\helpers\FileHelper::unlink()}}
  *
  * @author Basil Suter <basil@nadar.io>
  * @since 1.0.0

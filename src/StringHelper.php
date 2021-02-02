@@ -1,6 +1,6 @@
 <?php
 
-namespace luya\helpers;
+namespace luya\yii\helpers;
 
 use yii\helpers\BaseStringHelper;
 
@@ -9,12 +9,12 @@ use yii\helpers\BaseStringHelper;
  *
  * Extends the {{yii\helpers\StringHelper}} class by some usefull functions like:
  *
- * + {{luya\helpers\StringHelper::typeCast()}}
- * + {{luya\helpers\StringHelper::isFloat()}}
- * + {{luya\helpers\StringHelper::replaceFirst()}}
- * + {{luya\helpers\StringHelper::contains()}}
- * + {{luya\helpers\StringHelper::startsWithWildcard()}}
- * + {{luya\helpers\StringHelper::typeCastNumeric()}}
+ * + {{luya\yii\helpers\StringHelper::typeCast()}}
+ * + {{luya\yii\helpers\StringHelper::isFloat()}}
+ * + {{luya\yii\helpers\StringHelper::replaceFirst()}}
+ * + {{luya\yii\helpers\StringHelper::contains()}}
+ * + {{luya\yii\helpers\StringHelper::startsWithWildcard()}}
+ * + {{luya\yii\helpers\StringHelper::typeCastNumeric()}}
  *
  * @author Basil Suter <basil@nadar.io>
  * @since 1.0.0
@@ -24,9 +24,9 @@ class StringHelper extends BaseStringHelper
     /**
      * TypeCast a string to its specific types.
      *
-     * Arrays will passed to to the {{luya\helpers\ArrayHelper::typeCast()}} class.
+     * Arrays will passed to to the {{luya\yii\helpers\ArrayHelper::typeCast()}} class.
      *
-     * @param mixed $string The input string to type cast. Arrays will be passted to {{luya\helpers\ArrayHelper::typeCast()}}.
+     * @param mixed $string The input string to type cast. Arrays will be passted to {{luya\yii\helpers\ArrayHelper::typeCast()}}.
      * @return mixed The new type casted value, if the input is an array the output is the typecasted array.
      */
     public static function typeCast($string)
@@ -123,7 +123,7 @@ class StringHelper extends BaseStringHelper
      * TypeCast a numeric value to float or integer.
      *
      * If the given value is not a numeric or float value it will be returned as it is. In order to find out whether its float
-     * or not use {{luya\helpers\StringHelper::isFloat()}}.
+     * or not use {{luya\yii\helpers\StringHelper::isFloat()}}.
      *
      * @param mixed $value The given value to parse.
      * @return mixed Returns the original value if not numeric or integer, float casted value.

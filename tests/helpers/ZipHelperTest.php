@@ -1,10 +1,10 @@
 <?php
 
-namespace luya\helpers\tests\helpers;
+namespace luya\yii\helpers\tests\helpers;
 
-use luya\helpers\tests\HelpersTestCase;
+use luya\yii\helpers\tests\HelpersTestCase;
 use Yii;
-use luya\helpers\ZipHelper;
+use luya\yii\helpers\ZipHelper;
 
 class ZipHelperTest extends HelpersTestCase
 {

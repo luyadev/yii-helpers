@@ -1,10 +1,10 @@
 <?php
 
-namespace luya\helpers\tests\helpers;
+namespace luya\yii\helpers\tests\helpers;
 
-use luya\helpers\ExportHelper;
-use luya\helpers\ImportHelper;
-use luya\helpers\tests\HelpersTestCase;
+use luya\yii\helpers\ExportHelper;
+use luya\yii\helpers\ImportHelper;
+use luya\yii\helpers\tests\HelpersTestCase;
 
 class ImportHelperTest extends HelpersTestCase
 {

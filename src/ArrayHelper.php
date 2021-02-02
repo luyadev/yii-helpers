@@ -1,6 +1,6 @@
 <?php
 
-namespace luya\helpers;
+namespace luya\yii\helpers;
 
 use yii\helpers\BaseArrayHelper;
 
@@ -9,13 +9,13 @@ use yii\helpers\BaseArrayHelper;
  *
  * Extends the {{yii\helpers\ArrayHelper}} class by some usefull functions like:
  *
- * + {{luya\helpers\ArrayHelper::toObject()}}
- * + {{luya\helpers\ArrayHelper::arrayUnshiftAssoc()}}
- * + {{luya\helpers\ArrayHelper::typeCast()}}
- * + {{luya\helpers\ArrayHelper::search()}}
- * + {{luya\helpers\ArrayHelper::searchColumn()}}
- * + {{luya\helpers\ArrayHelper::searchColumns()}}
- * + {{luya\helpers\ArrayHelper::generateRange()}}
+ * + {{luya\yii\helpers\ArrayHelper::toObject()}}
+ * + {{luya\yii\helpers\ArrayHelper::arrayUnshiftAssoc()}}
+ * + {{luya\yii\helpers\ArrayHelper::typeCast()}}
+ * + {{luya\yii\helpers\ArrayHelper::search()}}
+ * + {{luya\yii\helpers\ArrayHelper::searchColumn()}}
+ * + {{luya\yii\helpers\ArrayHelper::searchColumns()}}
+ * + {{luya\yii\helpers\ArrayHelper::generateRange()}}
  *
  * @author Basil Suter <basil@nadar.io>
  * @since 1.0.0
@@ -23,7 +23,7 @@ use yii\helpers\BaseArrayHelper;
 class ArrayHelper extends BaseArrayHelper
 {
     /**
-     * @var array An array with sensitive keys which are used if no keys will be passed to {{luya\helpers\ArrayHelper::coverSensitiveValues()}}.
+     * @var array An array with sensitive keys which are used if no keys will be passed to {{luya\yii\helpers\ArrayHelper::coverSensitiveValues()}}.
      * @since 1.0.10
      */
     public static $sensitiveDefaultKeys = ['password', 'pwd', 'pass', 'passwort', 'pw', 'token', 'hash', 'authorization', 'auth'];
@@ -53,7 +53,7 @@ class ArrayHelper extends BaseArrayHelper
      * ```
      *
      * @param array $data The input data to cover given sensitive key values. `['username' => 'foo', 'password' => 'bar']`.
-     * @param array $key The keys which can contain sensitive data inside the $data array. `['password', 'pwd', 'pass']` if no keys provided the {{luya\helpers\ArrayHelper::$sensitiveDefaultKeys}} is used.
+     * @param array $key The keys which can contain sensitive data inside the $data array. `['password', 'pwd', 'pass']` if no keys provided the {{luya\yii\helpers\ArrayHelper::$sensitiveDefaultKeys}} is used.
      * @since 1.0.6
      */
     public static function coverSensitiveValues(array $data, array $keys = [])

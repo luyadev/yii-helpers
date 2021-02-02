@@ -1,10 +1,10 @@
 <?php
 
-namespace luya\helpers\tests\helpers;
+namespace luya\yii\helpers\tests\helpers;
 
-use luya\helpers\tests\HelpersTestCase;
+use luya\yii\helpers\tests\HelpersTestCase;
 use Yii;
-use luya\helpers\Url;
+use luya\yii\helpers\Url;
 
 class UrlTest extends HelpersTestCase
 {
