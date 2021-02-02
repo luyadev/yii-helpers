@@ -1,5 +1,5 @@
 {
-    "name": "luyadev/luya-helpers",
+    "name": "luyadev/yii-helpers",
     "description": "Static helper methods in addition to the Yii Framework.",
     "type": "library",
     "require": {

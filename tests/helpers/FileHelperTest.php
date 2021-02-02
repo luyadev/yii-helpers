@@ -103,5 +103,15 @@ class BarFoo {}');
         
         $this->assertFalse($ci['namespace']);
         $this->assertFalse($ci['class']);
+
+        $this->assertSame([
+            'namespace' => false,
+            'class' => false,
+        ], FileHelper::classInfo('ImportHelperTest.php'));
+    }
+
+    public function testHashName()
+    {
+        $this->assertSame('3b061fb3', FileHelper::hashName('foo'));
     }
 }
