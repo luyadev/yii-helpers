@@ -10,12 +10,12 @@
     },
     "autoload" : {
         "psr-4": {
-            "luya\\yii\\helpers\\" : "src/"
+            "luya\\yii\\" : "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "luya\\yii\\helpers\\tests\\" : "tests/"
+            "luya\\yii\\tests\\" : "tests/"
         }
     },
     "license": "MIT",

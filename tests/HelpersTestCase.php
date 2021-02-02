@@ -1,6 +1,6 @@
 <?php
 
-namespace luya\yii\helpers\tests;
+namespace luya\yii\tests;
 
 use luya\base\Boot;
 use luya\testsuite\cases\BaseTestSuite;
