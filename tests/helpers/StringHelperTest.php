@@ -158,6 +158,8 @@ EOT;
         $this->assertSame('test <b>référents</b>', StringHelper::highlightWord('test référents', 'REFERENTS'));
         $this->assertSame('test <b>référents</b>', StringHelper::highlightWord('test référents', 'référents'));
         $this->assertSame('test <b>référents</b>', StringHelper::highlightWord('test référents', 'Référents'));
+        $this->assertSame('<b>foo</b> bar <b>foo</b> bar', StringHelper::highlightWord('foo bar foo bar', 'foo'));
+        $this->assertSame('<b>féé</b> bar <b>fee</b> bar', StringHelper::highlightWord('féé bar fee bar', 'fee'));
     }
 
     public function testTransliteratedWordSlice()

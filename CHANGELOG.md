@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. This projec
 
 ## 1.1.0 (17. March 2021)
 
-+ [#]() Highlight word function works with text transliteration.
++ [#1](https://github.com/luyadev/yii-helpers/pull/1) Highlight word function works with text transliteration.
 
 ## 1.0.0 (2. February 2021)
 

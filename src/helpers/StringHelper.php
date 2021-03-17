@@ -306,24 +306,25 @@ class StringHelper extends BaseStringHelper
     public static function highlightWord($content, $word, $markup = '<b>%s</b>')
     {
         $transliterateContent = Inflector::transliterate($content);
-        $highlight = [];
+        $highlights = [];
         foreach ((array) $word as $word) {
             // search in content
             preg_match_all("/".preg_quote($word, '/')."+/i", $content, $matches);
             foreach ($matches[0] as $word) {
-                $highlight[] = $word;
+                $highlights[] = $word;
                 // if the word is covered already, do not process further in foreach and break here
                 break;
             }
+            
             // search in transliated content if not yet breaked from previous results
             preg_match_all("/".preg_quote($word, '/')."+/i", $transliterateContent, $matches);
             foreach ($matches[0] as $word) {
-                $highlight[] = self::sliceTransliteratedWord($word, $transliterateContent, $content);
+                $highlights[] = self::sliceTransliteratedWord($word, $transliterateContent, $content);
             }
         }
 
-        foreach (array_unique($highlight) as $highlightWord) {
-            $content = str_replace($highlightWord, sprintf($markup, $highlightWord), $content);
+        foreach (array_unique($highlights) as $highlight) {
+            $content = str_replace($highlight, sprintf($markup, $highlight), $content);
         }
 
         return $content;
