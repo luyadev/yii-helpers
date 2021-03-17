@@ -298,6 +298,12 @@ class StringHelper extends BaseStringHelper
      * Since version 1.0.14 its possible to provide an array with words to highlight
      *
      * > This function IS NOT case sensitive!
+     * 
+     * ```php
+     * StringHelper::highlightWord('Hello John!', 'john');
+     * ```
+     * 
+     * The above example would return `Hello <b>John</b>!`.
      *
      * @param string $content The content to find the word.
      * @param string $word The word to find within the content.
