@@ -295,11 +295,15 @@ class StringHelper extends BaseStringHelper
     /**
      * Highlight a word within a content.
      *
-     * Since version 1.0.14 an array of words to highlight is possible.
+     * Since version 1.0.14 its possible to provide an array with words to highlight
      *
      * > This function IS NOT case sensitive!
-     *
-     *
+     * 
+     * ```php
+     * StringHelper::highlightWord('Hello John!', 'john');
+     * ```
+     * 
+     * The above example would return `Hello <b>John</b>!`.
      *
      * @param string $content The content to find the word.
      * @param string $word The word to find within the content.
@@ -307,24 +311,51 @@ class StringHelper extends BaseStringHelper
      */
     public static function highlightWord($content, $word, $markup = '<b>%s</b>')
     {
-        $word = (array) $word;
-        $content = strip_tags($content);
-        $latest = null;
-        foreach ($word as $needle) {
-            preg_match_all("/".preg_quote($needle, '/')."+/i", $content, $matches);
-            if (is_array($matches[0]) && count($matches[0]) >= 1) {
-                foreach ($matches[0] as $match) {
-                    // ensure if a word is found twice we don't replace again.
-                    if ($latest === $match) {
-                        continue;
-                    }
-                    $content = str_replace($match, sprintf($markup, $match), $content);
-                    $latest = $match;
-                }
+        $transliterateContent = Inflector::transliterate($content);
+        $highlights = [];
+        foreach ((array) $word as $word) {
+            // search in content
+            preg_match_all("/".preg_quote($word, '/')."+/i", $content, $matches);
+            foreach ($matches[0] as $word) {
+                $highlights[] = $word;
+                // if the word is covered already, do not process further in foreach and break here
+                break;
+            }
+            
+            // search in transliated content if not yet breaked from previous results
+            preg_match_all("/".preg_quote($word, '/')."+/i", $transliterateContent, $matches);
+            foreach ($matches[0] as $word) {
+                $highlights[] = self::sliceTransliteratedWord($word, $transliterateContent, $content);
             }
         }
 
+        foreach (array_unique($highlights) as $highlight) {
+            $content = str_replace($highlight, sprintf($markup, $highlight), $content);
+        }
+
         return $content;
+    }
+
+    /**
+     * Search a word within a transliterated text and cut out the original word in the original text.
+     * 
+     * For example when you search for the transliaterad word in text and want to return the original:
+     * 
+     * ```php
+     * StringHelper::sliceTransliteratedWord('frederic', 'Hello frederic', 'Hello fréderic');
+     * ```
+     * 
+     * The above example would return `fréderic`
+     *
+     * @param string $word
+     * @param string $transliteratedText
+     * @param string $originalText
+     * @return string
+     * @since 1.1.0
+     */
+    public static function sliceTransliteratedWord($word, $transliteratedText, $originalText)
+    {
+        return mb_substr($originalText, mb_strpos($transliteratedText, $word), mb_strlen($word));
     }
 
     /**
