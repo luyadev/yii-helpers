@@ -139,7 +139,6 @@ EOT;
         $this->assertSame('..oo ABC ba..', StringHelper::truncateMiddle('foo ABC bar', 'abc', 3));
         $this->assertSame('foo abc..', StringHelper::truncateMiddle('foo abc bar', 'notfound', 4));
     }
-
     public function testHighlightWord()
     {
         $this->assertSame('foo <b>bar</b> foo', StringHelper::highlightWord('foo bar foo', 'bar'));
@@ -155,6 +154,16 @@ EOT;
 
         $this->assertStringContainsString(' unsere <b>kompetent</b>en und <b>motiviert</b>en', StringHelper::highlightWord($str, ['Kompetent', 'Motiviert']));
         $this->assertStringContainsString('vor <b>Ort</b> angebot', StringHelper::highlightWord($str, 'ort'));
+        $this->assertSame('test <b>référents</b>', StringHelper::highlightWord('test référents', 'referents'));
+        $this->assertSame('test <b>référents</b>', StringHelper::highlightWord('test référents', 'REFERENTS'));
+        $this->assertSame('test <b>référents</b>', StringHelper::highlightWord('test référents', 'référents'));
+        $this->assertSame('test <b>référents</b>', StringHelper::highlightWord('test référents', 'Référents'));
+    }
+
+    public function testTransliteratedWordSlice()
+    {
+        $this->assertSame('foo', StringHelper::sliceTransliteratedWord('foo', 'hello foo bar', 'hello foo bar'));
+        $this->assertSame('féé', StringHelper::sliceTransliteratedWord('fee', 'hello fee bar', 'hello féé bar'));
     }
 
     public function testCutAndHighlightWord()
