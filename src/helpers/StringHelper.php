@@ -329,8 +329,22 @@ class StringHelper extends BaseStringHelper
             }
         }
 
+        // hightlight all results in text with [[$word]]
         foreach (array_unique($highlights) as $highlight) {
-            $content = str_replace($highlight, sprintf($markup, $highlight), $content);
+            $content = str_replace($highlight, '[['.$highlight.']]', $content);
+        }
+
+        preg_match_all('/\[\[(.*?)\]\]/', $content, $matches, PREG_SET_ORDER);
+        
+        $searchReplace = [];
+        foreach ($matches as $match) {
+            if (!array_key_exists($match[0], $searchReplace)) {
+                $searchReplace[$match[0]] = sprintf($markup, $match[1]);
+            }
+        }
+
+        foreach ($searchReplace as $search => $replace) {
+            $content = str_replace($search, $replace, $content);
         }
 
         return $content;

@@ -139,6 +139,7 @@ EOT;
         $this->assertSame('..oo ABC ba..', StringHelper::truncateMiddle('foo ABC bar', 'abc', 3));
         $this->assertSame('foo abc..', StringHelper::truncateMiddle('foo abc bar', 'notfound', 4));
     }
+    
     public function testHighlightWord()
     {
         $this->assertSame('foo <b>bar</b> foo', StringHelper::highlightWord('foo bar foo', 'bar'));
@@ -162,11 +163,6 @@ EOT;
         $this->assertSame('<b>féé</b> bar <b>fee</b> bar', StringHelper::highlightWord('féé bar fee bar', 'fee'));
     }
 
-    public function testTransliteratedWordSlice()
-    {
-        $this->assertSame('foo', StringHelper::sliceTransliteratedWord('foo', 'hello foo bar', 'hello foo bar'));
-        $this->assertSame('féé', StringHelper::sliceTransliteratedWord('fee', 'hello fee bar', 'hello féé bar'));
-    }
 
     public function testCutAndHighlightWord()
     {
@@ -176,6 +172,18 @@ EOT;
         $text = StringHelper::truncateMiddle('Не следует, однако, забывать, что высокое ка', $word, 20);
         $this->assertSame('Не следует, однако, забывать, что высокое ка', $text);
         $this->assertSame('Не следует, однако, <b>забывать</b>, что высокое ка', StringHelper::highlightWord($text, $word));
+    }
+    public function testHightlightWithItsOwnWord()
+    {
+        $this->assertSame('Die attraktivste Gemeinde Damonisu Skadalitus. <span style="background-color:#FFEBD1; color:black;">Lor</span>em ipsum do<span style="background-color:#FFEBD1; color:black;">lor</span> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et do<span style="background-color:#FFEBD1; color:black;">lor</span>e magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo do<span style="background-color:#FFEBD1; color:black;">lor</span>es et ..', StringHelper::highlightWord('Die attraktivste Gemeinde Damonisu Skadalitus. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ..', 'lor', '<span style="background-color:#FFEBD1; color:black;">%s</span>'));
+
+        $this->assertSame('Die attraktivste Gemeinde Damonisu Skadalitus. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ..', StringHelper::highlightWord('Die attraktivste Gemeinde Damonisu Skadalitus. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ..', 'lor color', '<span style="background-color:#FFEBD1; color:black;">%s</span>'));
+    }
+
+    public function testTransliteratedWordSlice()
+    {
+        $this->assertSame('foo', StringHelper::sliceTransliteratedWord('foo', 'hello foo bar', 'hello foo bar'));
+        $this->assertSame('féé', StringHelper::sliceTransliteratedWord('fee', 'hello fee bar', 'hello féé bar'));
     }
 
     public function testIsNumeric()
