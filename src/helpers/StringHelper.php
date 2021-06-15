@@ -432,12 +432,14 @@ class StringHelper extends BaseStringHelper
      *
      * @param string $template The template to parse. The template may contain double curly brackets variables.
      * @param array $variables The variables which should be available in the template.
-     * @param boolean $removeEmpty Whether variables in double curly brackets should be removed event the have not be assigned by $variables array.
+     * @param boolean $removeEmpty Whether variables in double curly brackets should be removed, even the have not be assigned by $variables array.
+     * @param string $leftDelimiter The delimiter for the variable on the left, default is `{{`
+     * @param string $rightDelimiter The delimiter for the variable on the right, default is `}}`
      * @return string
      */
-    public static function template($template, array $variables = [], $removeEmpty = false)
+    public static function template($template, array $variables = [], $removeEmpty = false, $leftDelimiter = '{{', $rightDelimiter = '}}')
     {
-        preg_match_all("/{{(.*?)}}/", $template, $matches, PREG_SET_ORDER);
+        preg_match_all("/$leftDelimiter(.*?)$rightDelimiter/", $template, $matches, PREG_SET_ORDER);
 
         if (empty($matches)) {
             return $template;
