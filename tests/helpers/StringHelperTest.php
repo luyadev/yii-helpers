@@ -253,6 +253,13 @@ EOT;
         $this->assertSame('<p>bar </p>', StringHelper::template('<p>{{ foo }} {{unknown}}</p>', ['foo' => 'bar', 'xyz' => 'abc'], true));
     }
 
+    public function testTemplateDelimiterChange()
+    {
+        $this->assertSame('<p>bar</p>', StringHelper::template('<p>bar</p>'));
+        $this->assertSame('<p>bar</p>', StringHelper::template('<p>{foo}</p>', ['foo' => 'bar'], true, '{', '}'));
+        $this->assertSame('<p>bar</p>', StringHelper::template('<p>{ foo }</p>', ['foo' => 'bar'], true, '{', '}'));
+    }
+
     public function testTextList()
     {
         $this->assertSame(['foo', 'bar'], StringHelper::textList('foo ,bar'));
