@@ -179,13 +179,23 @@ class ExportHelper
             } elseif (!is_scalar($item)) {
                 $item = "[array]";
             }
-            $item = $enclose.str_replace([
-                '"',
-            ], [
-                '""',
-            ], $item).$enclose;
+            $item = $enclose.self::sanitizeValue($item).$enclose;
         });
 
         return implode($delimiter, $row) . PHP_EOL;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $value
+     * @return void
+     * @see https://owasp.org/www-community/attacks/CSV_Injection
+     */
+    public static function sanitizeValue($value)
+    {
+        return str_replace([
+            '";', '",', '"', "'"
+        ], '', trim($value));
     }
 }

@@ -139,6 +139,6 @@ class ExportHelperTest extends HelpersTestCase
             ['&', "'", 'a"b"c'],
         ], [], false);
 
-        $this->assertSameTrimmed('"&","\'","a""b""c"', $content);
+        $this->assertSameTrimmed('"&","","abc"', $content);
     }
 }
