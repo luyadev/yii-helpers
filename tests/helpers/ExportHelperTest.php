@@ -137,8 +137,9 @@ class ExportHelperTest extends HelpersTestCase
     {
         $content = ExportHelper::csv([
             ['&', "'", 'a"b"c'],
+            ['nix', 'nix', '=1+2";=1+2']
         ], [], false);
 
-        $this->assertSameTrimmed('"&","\'","a""b""c"', $content);
+        $this->assertSameTrimmed('"&","\'","a""b""c" "nix","nix","\'=1+2"";=1+2"', $content);
     }
 }

@@ -179,13 +179,33 @@ class ExportHelper
             } elseif (!is_scalar($item)) {
                 $item = "[array]";
             }
-            $item = $enclose.str_replace([
-                '"',
-            ], [
-                '""',
-            ], $item).$enclose;
+            $item = $enclose.self::sanitizeValue($item).$enclose;
         });
 
         return implode($delimiter, $row) . PHP_EOL;
+    }
+
+    /**
+     * Sanitize Certain Values to increase security from user generated output.
+     * 
+     * @param string $value
+     * @return string
+     * @see https://owasp.org/www-community/attacks/CSV_Injection
+     * @since 1.2.1
+     */
+    public static function sanitizeValue($value)
+    {
+        $value = str_replace([
+            '"',
+        ], [
+            '""',
+        ], trim($value));
+
+        $firstChar = substr($value, 0, 1);
+        if (in_array($firstChar, ['=', '+', '-', '@', PHP_EOL, "\t", "\n"])) {
+            $value = StringHelper::replaceFirst($firstChar, "'$firstChar", $value);
+        }
+
+        return $value;
     }
 }
