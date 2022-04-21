@@ -186,10 +186,12 @@ class ExportHelper
     }
 
     /**
+     * Sanitize Certain Values to increase security from user generated output.
      * 
      * @param string $value
      * @return string
      * @see https://owasp.org/www-community/attacks/CSV_Injection
+     * @since 1.2.1
      */
     public static function sanitizeValue($value)
     {
