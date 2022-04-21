@@ -186,16 +186,24 @@ class ExportHelper
     }
 
     /**
-     * Undocumented function
-     *
-     * @param [type] $value
-     * @return void
+     * 
+     * @param string $value
+     * @return string
      * @see https://owasp.org/www-community/attacks/CSV_Injection
      */
     public static function sanitizeValue($value)
     {
-        return str_replace([
-            '";', '",', '"', "'"
-        ], '', trim($value));
+        $value = str_replace([
+            '"',
+        ], [
+            '""',
+        ], trim($value));
+
+        $firstChar = substr($value, 0, 1);
+        if (in_array($firstChar, ['=', '+', '-', '@', PHP_EOL, "\t", "\n"])) {
+            $value = StringHelper::replaceFirst($firstChar, "'$firstChar", $value);
+        }
+
+        return $value;
     }
 }
