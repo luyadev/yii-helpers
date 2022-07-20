@@ -446,8 +446,9 @@ class StringHelper extends BaseStringHelper
         }
 
         foreach ($matches as $match) {
-            if (array_key_exists(trim($match[1]), $variables)) {
-                $template = str_replace($match[0], $variables[trim($match[1])], $template);
+            $exposedVariableName = trim($match[1]);
+            if (array_key_exists($exposedVariableName, $variables)) {
+                $template = str_replace($match[0], $variables[$exposedVariableName], $template);
             } elseif ($removeEmpty) {
                 $template = str_replace($match[0], '', $template);
             }

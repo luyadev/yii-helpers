@@ -259,6 +259,12 @@ EOT;
         $this->assertSame('<p>bar</p>', StringHelper::template('<p>{foo}</p>', ['foo' => 'bar'], true, '{', '}'));
         $this->assertSame('<p>bar</p>', StringHelper::template('<p>{ foo }</p>', ['foo' => 'bar'], true, '{', '}'));
     }
+    
+    public function testEmptyTemplateTestsForPhp81()
+    {
+        $this->assertSame('<p></p>', StringHelper::template('<p>{{foo}}</p>', ['foo' => null]));
+        $this->assertSame('<p></p>', StringHelper::template('<p>{{foo}}</p>', ['foo' => '']));
+    }
 
     public function testTextList()
     {
