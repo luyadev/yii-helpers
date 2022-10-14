@@ -74,7 +74,7 @@ class ExportHelper
     /**
      * Generate content by rows.
      *
-     * @param array $contentRows
+     * @param array|string $contentRows
      * @param array $keys
      * @param bool $generateHeader
      * @param array $options Options
