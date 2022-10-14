@@ -41,7 +41,7 @@ class Inflector extends BaseInflector
         $string = preg_replace('/[`%\+=\{\}\|\\\.<>\/\_]+/u', '', $string); // replace those chars with nothing
         $string = preg_replace('/[=\s—–-]+/u', $replacement, $string); // replace single and double spaces by $replacement char.
         $string = trim($string, $replacement);
-        
+
         return $lowercase ? mb_strtolower($string) : $string;
     }
 }

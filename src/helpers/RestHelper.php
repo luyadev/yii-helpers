@@ -3,8 +3,8 @@
 namespace luya\yii\helpers;
 
 use Yii;
-use yii\base\Model;
 use yii\base\InvalidParamException;
+use yii\base\Model;
 
 /**
  * Rest API Helper.
@@ -46,7 +46,7 @@ class RestHelper
         if (!$model->hasErrors()) {
             throw new InvalidParamException('The model as thrown an uknown Error.');
         }
-        
+
         Yii::$app->response->setStatusCode(422, 'Data Validation Failed.');
         $result = [];
         foreach ($model->getFirstErrors() as $name => $message) {
@@ -55,10 +55,10 @@ class RestHelper
                 'message' => $message,
             ];
         }
-        
+
         return $result;
     }
-    
+
     /**
      * Send Array validation error.
      *
@@ -89,12 +89,12 @@ class RestHelper
         $result = [];
         foreach ($errors as $key => $value) {
             $messages = (array) $value;
-            
+
             foreach ($messages as $msg) {
                 $result[] = ['field' => $key, 'message' => $msg];
             }
         }
-        
+
         return $result;
     }
 }

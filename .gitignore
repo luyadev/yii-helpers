@@ -3,3 +3,4 @@ luya
 composer.lock
 .phpunit*
 .php*
+.tmp

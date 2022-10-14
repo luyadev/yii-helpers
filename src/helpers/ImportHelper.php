@@ -32,7 +32,7 @@ class ImportHelper
     public static function csv($filename, array $options = [])
     {
         $filename = Yii::getAlias($filename);
-        
+
         // check if a given file name is provided or a csv based on the content
         if (FileHelper::getFileInfo($filename)->extension) {
             $resource = fopen($filename, 'r');
@@ -46,7 +46,7 @@ class ImportHelper
             $data[] = $row;
         }
         fclose($resource);
-        
+
         // check whether only an amount of fields should be parsed into the final array
         $fields = ArrayHelper::getValue($options, 'fields', false);
         if ($fields && is_array($fields)) {
@@ -65,13 +65,13 @@ class ImportHelper
             $data = $filteredData;
             unset($filteredData);
         }
-        
+
         // if the option to remove a header is provide. remove the first key and reset and array keys
         if (ArrayHelper::getValue($options, 'removeHeader', false)) {
             unset($data[0]);
             $data = array_values($data);
         }
-        
+
         return $data;
     }
 }

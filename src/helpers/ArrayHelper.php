@@ -26,7 +26,7 @@ class ArrayHelper extends BaseArrayHelper
      * @var array An array with sensitive keys which are used if no keys will be passed to {{luya\yii\helpers\ArrayHelper::coverSensitiveValues()}}.
      */
     public static $sensitiveDefaultKeys = ['password', 'pwd', 'pass', 'passwort', 'pw', 'token', 'hash', 'authorization', 'auth'];
-    
+
     /**
      * Create an object from an array.
      *
@@ -35,7 +35,7 @@ class ArrayHelper extends BaseArrayHelper
      */
     public static function toObject(array $array)
     {
-        return json_decode(json_encode($array), false);
+        return json_decode(json_encode($array, JSON_THROW_ON_ERROR), false, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
@@ -59,7 +59,7 @@ class ArrayHelper extends BaseArrayHelper
         if (empty($keys)) {
             $keys = self::$sensitiveDefaultKeys;
         }
-        
+
         $clean = [];
         foreach ($keys as $key) {
             $kw = strtolower($key);
@@ -72,11 +72,11 @@ class ArrayHelper extends BaseArrayHelper
                 }
             }
         }
-        
+
         // the later overrides the former
         return array_replace($data, $clean);
     }
-    
+
     /**
      * Prepend an assoc array item as first entry for a given array.
      *
@@ -93,7 +93,7 @@ class ArrayHelper extends BaseArrayHelper
         $arr[$key] = $val;
         return array_reverse($arr, true);
     }
-    
+
     /**
      * TypeCast values from a mixed array source. numeric values will be casted as integer.
      *
@@ -105,7 +105,7 @@ class ArrayHelper extends BaseArrayHelper
     public static function typeCast(array $array)
     {
         $return = [];
-        
+
         foreach ($array as $k => $v) {
             if (is_numeric($v)) {
                 $return[$k] = StringHelper::typeCastNumeric($v);
@@ -115,10 +115,10 @@ class ArrayHelper extends BaseArrayHelper
                 $return[$k] = $v;
             }
         }
-        
+
         return $return;
     }
-    
+
     /**
      * Search trough all keys inside of an array, any occurence will return the rest of the array.
      *
@@ -166,7 +166,7 @@ class ArrayHelper extends BaseArrayHelper
                 if (!empty($keys) && !in_array($key, $keys)) {
                     continue;
                 }
-                
+
                 if ($function($value, "$searchText") !== false) {
                     $response = true;
                 }
@@ -174,7 +174,7 @@ class ArrayHelper extends BaseArrayHelper
             return $response;
         });
     }
-    
+
     /**
      * Search for a Column Value inside a Multidimension array and return the array with the found key.
      *
@@ -204,9 +204,9 @@ class ArrayHelper extends BaseArrayHelper
         $array = array_values($array); // align array keys
         $columns = array_column($array, $column);
         $key = array_search($search, $columns);
-        return ($key !== false) ?  $array[$key] : false;
+        return ($key !== false) ? $array[$key] : false;
     }
-    
+
     /**
      * Search for columns with the given search value, returns the full array with all valid items.
      *
@@ -236,13 +236,11 @@ class ArrayHelper extends BaseArrayHelper
      */
     public static function searchColumns(array $array, $column, $search)
     {
-        $keys = array_filter($array, function ($var) use ($column, $search) {
-            return strcasecmp($search, $var[$column]) == 0 ? true : false;
-        });
-        
+        $keys = array_filter($array, fn ($var) => strcasecmp($search, $var[$column]) == 0 ? true : false);
+
         return $keys;
     }
-    
+
     /**
      * Generate an Array from a Rang with an appending optional Text.
      *
@@ -274,11 +272,11 @@ class ArrayHelper extends BaseArrayHelper
     {
         $range = range($from, $to);
         $array = array_combine($range, $range);
-        
+
         if ($text) {
             array_walk($array, function (&$item, $key) use ($text) {
                 if (is_array($text)) {
-                    list($singular, $plural) = $text;
+                    [$singular, $plural] = $text;
                     if ($key == 1) {
                         $item = "{$key} {$singular}";
                     } else {
@@ -289,7 +287,7 @@ class ArrayHelper extends BaseArrayHelper
                 }
             });
         }
-        
+
         return $array;
     }
 

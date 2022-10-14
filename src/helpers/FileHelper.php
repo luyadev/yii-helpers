@@ -2,8 +2,8 @@
 
 namespace luya\yii\helpers;
 
-use Yii;
 use Exception;
+use Yii;
 
 /**
  * Helper methods when dealing with Files.
@@ -56,9 +56,9 @@ class FileHelper extends \yii\helpers\BaseFileHelper
 
         return $file;
     }
-    
-    
-    
+
+
+
     /**
      * Provide class informations from a file path or file content.
      *
@@ -76,18 +76,18 @@ class FileHelper extends \yii\helpers\BaseFileHelper
         } else {
             $phpCode = $file;
         }
-        
+
         $namespace = false;
-        
+
         if (preg_match('/^namespace\s+(.+?);(\s+|\r\n)?$/sm', $phpCode, $results)) {
             $namespace = $results[1];
         }
-        
+
         $classes = self::classNameByTokens($phpCode);
-        
+
         return ['namespace' => $namespace, 'class' => end($classes)];
     }
-    
+
     /**
      * Tokenize the php code from a given class in in order to determine the class name.
      *
@@ -104,7 +104,7 @@ class FileHelper extends \yii\helpers\BaseFileHelper
                 $classes[] = $tokens[$i][1];
             }
         }
-        
+
         return $classes;
     }
 
@@ -122,7 +122,7 @@ class FileHelper extends \yii\helpers\BaseFileHelper
     {
         return sprintf('%s', hash('crc32b', uniqid($fileName, true)));
     }
-    
+
     /**
      * Get extension and name from a file for the provided source/path of the file.
      *
@@ -132,7 +132,7 @@ class FileHelper extends \yii\helpers\BaseFileHelper
     public static function getFileInfo($sourceFile)
     {
         $path = pathinfo($sourceFile);
-    
+
         return (object) [
             'extension' => (isset($path['extension']) && !empty($path['extension'])) ? mb_strtolower($path['extension'], 'UTF-8') : false,
             'name' => (isset($path['filename']) && !empty($path['filename'])) ? $path['filename'] : false,
@@ -140,7 +140,7 @@ class FileHelper extends \yii\helpers\BaseFileHelper
             'sourceFilename' => (isset($path['dirname']) && isset($path['filename'])) ? $path['dirname'] . DIRECTORY_SEPARATOR . $path['filename'] : false,
         ];
     }
-    
+
     /**
      * Generate a md5 hash of a file. This is eqauls to `md5sum` command
      *
@@ -151,7 +151,7 @@ class FileHelper extends \yii\helpers\BaseFileHelper
     {
         return file_exists($sourceFile) ? hash_file('md5', $sourceFile) : false;
     }
-    
+
     /**
      * Basic helper method to write files with exception capture. The fileName will auto wrapped
      * trough the Yii::getAlias function.
@@ -170,10 +170,10 @@ class FileHelper extends \yii\helpers\BaseFileHelper
         } catch (Exception $error) {
             return false;
         }
-        
+
         return true;
     }
-    
+
     /**
      * Basic helper to retreive the content of a file and catched exception. The filename
      * will auto alias encode by Yii::getAlias function.
@@ -189,7 +189,7 @@ class FileHelper extends \yii\helpers\BaseFileHelper
             return false;
         }
     }
-    
+
     /**
      * Unlink a file, which handles symlinks.
      *
@@ -205,7 +205,7 @@ class FileHelper extends \yii\helpers\BaseFileHelper
             }
         } catch (\Exception $e) {
         }
-        
+
         // try to force symlinks
         if (is_link($file)) {
             $sym = @readlink($file);
@@ -215,14 +215,14 @@ class FileHelper extends \yii\helpers\BaseFileHelper
                 }
             }
         }
-        
+
         // try to use realpath
         if (realpath($file) && realpath($file) !== $file) {
             if (@unlink(realpath($file))) {
                 return true;
             }
         }
-        
+
         return false;
     }
 }

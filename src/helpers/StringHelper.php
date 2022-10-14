@@ -36,10 +36,10 @@ class StringHelper extends BaseStringHelper
         } elseif (is_array($string)) {
             return ArrayHelper::typeCast($string);
         }
-        
+
         return $string;
     }
-    
+
     /**
      * String Wildcard Check.
      *
@@ -58,7 +58,7 @@ class StringHelper extends BaseStringHelper
         if (substr($with, -1) != "*") {
             return false;
         }
-        
+
         return self::startsWith($string, rtrim($with, '*'), $caseSensitive);
     }
 
@@ -117,7 +117,7 @@ class StringHelper extends BaseStringHelper
 
         return false;
     }
-    
+
     /**
      * TypeCast a numeric value to float or integer.
      *
@@ -132,14 +132,14 @@ class StringHelper extends BaseStringHelper
         if (!self::isFloat($value)) {
             return $value;
         }
-        
+
         if (intval($value) == $value) {
             return (int) $value;
         }
-        
+
         return (float) $value;
     }
-    
+
     /**
      * Checks whether a string is a float value.
      *
@@ -153,10 +153,10 @@ class StringHelper extends BaseStringHelper
         if (is_float($value)) {
             return true;
         }
-        
+
         return ($value == (string)(float) $value);
     }
-    
+
     /**
      * Replace only the first occurance found inside the string.
      *
@@ -175,7 +175,7 @@ class StringHelper extends BaseStringHelper
     {
         return preg_replace('/'.preg_quote($search, '/').'/', $replace, $subject, 1);
     }
-    
+
     /**
      * Check whether a char or word exists in a string or not.
      *
@@ -207,16 +207,16 @@ class StringHelper extends BaseStringHelper
     public static function contains($needle, $haystack, $strict = false)
     {
         $needles = (array) $needle;
-        
+
         $state = false;
-        
+
         foreach ($needles as $item) {
-            $state = (strpos($haystack, $item) !== false);
-            
+            $state = (strpos($haystack, (string) $item) !== false);
+
             if ($strict && !$state) {
                 return false;
             }
-            
+
             if (!$strict && $state) {
                 return true;
             }
@@ -224,7 +224,7 @@ class StringHelper extends BaseStringHelper
 
         return $state;
     }
-    
+
     /**
      * "Minify" html content.
      *
@@ -242,11 +242,11 @@ class StringHelper extends BaseStringHelper
     {
         $min = preg_replace(['/[\n\r]/', '/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s', ], ['', '>', '<', '\\1'], trim($content));
         $min = str_replace(['> <'], ['><'], $min);
-        
+
         if (ArrayHelper::getValue($options, 'comments', false)) {
             $min = preg_replace('/<!--(.*)-->/Uis', '', $min);
         }
-        
+
         return $min;
     }
 
@@ -298,11 +298,11 @@ class StringHelper extends BaseStringHelper
      * Since version 1.0.14 its possible to provide an array with words to highlight
      *
      * > This function IS NOT case sensitive!
-     * 
+     *
      * ```php
      * StringHelper::highlightWord('Hello John!', 'john');
      * ```
-     * 
+     *
      * The above example would return `Hello <b>John</b>!`.
      *
      * @param string $content The content to find the word.
@@ -321,8 +321,8 @@ class StringHelper extends BaseStringHelper
         if (count($words) > 1) {
             foreach ($words as $wordIndex => $word) {
                 $inArrayIndex = preg_grep('/'.preg_quote($word).'/', $words);
-                if (count($inArrayIndex) > 1) {
-                    unset ($words[$wordIndex]);
+                if ((is_countable($inArrayIndex) ? count($inArrayIndex) : 0) > 1) {
+                    unset($words[$wordIndex]);
                 }
             }
         }
@@ -335,7 +335,7 @@ class StringHelper extends BaseStringHelper
                 // if the word is covered already, do not process further in foreach and break here
                 break;
             }
-            
+
             // search in transliated content if not yet breaked from previous results
             preg_match_all("/".preg_quote($word, '/')."+/i", $transliterateContent, $matches);
             foreach ($matches[0] as $word) {
@@ -349,7 +349,7 @@ class StringHelper extends BaseStringHelper
         }
 
         preg_match_all('/\[\[(.*?)\]\]/', $content, $matches, PREG_SET_ORDER);
-        
+
         $searchReplace = [];
         foreach ($matches as $match) {
             if (!array_key_exists($match[0], $searchReplace)) {
@@ -366,13 +366,13 @@ class StringHelper extends BaseStringHelper
 
     /**
      * Search a word within a transliterated text and cut out the original word in the original text.
-     * 
+     *
      * For example when you search for the transliaterad word in text and want to return the original:
-     * 
+     *
      * ```php
      * StringHelper::sliceTransliteratedWord('frederic', 'Hello frederic', 'Hello fréderic');
      * ```
-     * 
+     *
      * The above example would return `fréderic`
      *
      * @param string $word

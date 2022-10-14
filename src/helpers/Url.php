@@ -37,7 +37,7 @@ class Url extends BaseUrl
     {
         return rtrim($url, $slash) . $slash;
     }
-    
+
     /**
      * This helper method will not concern any context informations
      *
@@ -50,7 +50,7 @@ class Url extends BaseUrl
         if ($scheme) {
             return Yii::$app->getUrlManager()->internalCreateAbsoluteUrl($routeParams);
         }
-        
+
         return Yii::$app->getUrlManager()->internalCreateUrl($routeParams);
     }
 
@@ -67,10 +67,10 @@ class Url extends BaseUrl
         foreach ($params as $key => $value) {
             $routeParams[$key] = $value;
         }
-        
+
         return static::toInternal($routeParams, true);
     }
-    
+
     /**
      * Apply the http protcol to an url to make sure valid clickable links. Commonly used when provide link where user could have added urls
      * in an administration area. For Example:
@@ -90,7 +90,7 @@ class Url extends BaseUrl
         if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
             $url = ($https ? "https://" : "http://") . $url;
         }
-        
+
         return $url;
     }
 
@@ -159,7 +159,7 @@ class Url extends BaseUrl
             // add seperator
             return $url . '&' . $append;
         }
-        
+
         // use ?
         return $url . '?' . $append;
     }

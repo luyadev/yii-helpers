@@ -109,7 +109,7 @@ class ExportHelper
             if (ArrayHelper::getValue($options, 'sort', true)) {
                 ksort($row);
             }
-            
+
             $rows[$i] = $row;
 
             // handle header
@@ -187,7 +187,7 @@ class ExportHelper
 
     /**
      * Sanitize Certain Values to increase security from user generated output.
-     * 
+     *
      * @param string $value
      * @return string
      * @see https://owasp.org/www-community/attacks/CSV_Injection
