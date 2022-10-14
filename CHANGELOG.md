@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.3 ()
+
++ [#9](https://github.com/luyadev/yii-helpers/pull/9) Fixed issue when a word exists inside a highlight word in function `StringHelper::highlightWord()`
+
 ## 1.2.2 (20. July 2022)
 
 + [#8](https://github.com/luyadev/yii-helpers/pull/8) Added tests for PHP 8.1
