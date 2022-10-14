@@ -39,12 +39,11 @@ class Json extends BaseJson
 
         $firstChar = substr($value, 0, 1);
 
-
         if ($firstChar !== '{' && $firstChar !== '[') {
             return false;
         }
 
-        $json_check = json_decode($value);
+        json_decode($value);
 
         return json_last_error() === JSON_ERROR_NONE;
     }

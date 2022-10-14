@@ -57,8 +57,6 @@ class FileHelper extends \yii\helpers\BaseFileHelper
         return $file;
     }
 
-
-
     /**
      * Provide class informations from a file path or file content.
      *

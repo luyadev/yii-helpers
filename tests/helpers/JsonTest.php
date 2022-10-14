@@ -14,6 +14,9 @@ class JsonTest extends HelpersTestCase
         $this->assertFalse(Json::isJson('12312312'));
         $this->assertFalse(Json::isJson(12312312));
         $this->assertFalse(Json::isJson('luya{"123":123}'));
+        $this->assertFalse(Json::isJson('{"123":\'123}'));
+        $this->assertFalse(Json::isJson('{"1233}'));
+        $this->assertFalse(Json::isJson('{"1232"3}'));
         // is a json
         $this->assertTrue(Json::isJson('{"123":"456"}'));
         $this->assertTrue(Json::isJson('{"123":456}'));
