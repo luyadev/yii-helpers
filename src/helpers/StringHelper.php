@@ -306,14 +306,28 @@ class StringHelper extends BaseStringHelper
      * The above example would return `Hello <b>John</b>!`.
      *
      * @param string $content The content to find the word.
-     * @param string $word The word to find within the content.
+     * @param string|array $word The word to find within the content. It can be an array. If a word exists already in the list of words, this one will be stripped. f.e. `['test', 'testfoobar'] would remove `test` from the list as it exists in `testfoobar`
      * @param string $markup The markup used wrap the word to highlight.
      */
     public static function highlightWord($content, $word, $markup = '<b>%s</b>')
     {
         $transliterateContent = Inflector::transliterate($content);
         $highlights = [];
-        foreach ((array) $word as $word) {
+
+        $words = array_unique((array) $word);
+
+        // if there are multiple words, we need to ensure the same part of a word does not exists twice
+        // otherwise this can generate wrong highlight results like a highlight inside of a highlight.
+        if (count($words) > 1) {
+            foreach ($words as $wordIndex => $word) {
+                $inArrayIndex = preg_grep('/'.preg_quote($word).'/', $words);
+                if (count($inArrayIndex) > 1) {
+                    unset ($words[$wordIndex]);
+                }
+            }
+        }
+
+        foreach ($words as $word) {
             // search in content
             preg_match_all("/".preg_quote($word, '/')."+/i", $content, $matches);
             foreach ($matches[0] as $word) {
