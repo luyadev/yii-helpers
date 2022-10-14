@@ -1,7 +1,9 @@
 parameters:
-  level: 1
+  level: 5
   paths:
     - src
   bootstrapFiles:
     - vendor/yiisoft/yii2/Yii.php
   tmpDir: .tmp
+  excludePaths:
+    - src/helpers/XLSXWriter.php

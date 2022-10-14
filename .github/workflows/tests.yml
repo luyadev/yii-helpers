@@ -6,6 +6,74 @@ env:
   DEFAULT_COMPOSER_FLAGS: "--prefer-dist --no-interaction"
   CC_TEST_REPORTER_ID: a3e21784ef59ddcf7c4e0c56ebb9a0a31131d96d6cb78972848ac4b628a4191f
 jobs:
+  ## PHPSTAN
+  phpstan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@2.21.0
+        with:
+          php-version: '8.0'
+          extensions: mbstring, intl
+          coverage: none
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          update: true
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader
+
+      - name: PHPStan tests
+        run: composer phpstan
+
+  ## Rector
+  rector:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@2.21.0
+        with:
+          php-version: '8.0'
+          extensions: mbstring, intl
+          coverage: none
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          update: true
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader
+
+      - name: Rector tests
+        run: composer rector
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply rector changes
+
+  # PHPCSFIXER
+  php-cs-fixer:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+
+        - name: Install
+          run: composer install
+
+        - name: Run php-cs-fixer
+          run: composer phpcsfixer
+
+        - uses: stefanzweifel/git-auto-commit-action@v4
+          with:
+              commit_message: Apply php-cs-fixer changes
+
+  # PHPUNIT
   phpunit:
     name: PHP ${{ matrix.php }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
@@ -13,7 +81,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        php: ['7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1']
+        php: ['7.4', '8.0', '8.1']
 
     steps:
       ## checkout the repoistory 
@@ -25,7 +93,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: curl, dom, imagick, intl, mbstring, mcrypt, mysql, pdo, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, sqlite, zip
+          extensions: curl, dom, intl, mbstring, sqlite, zip
           ini-values: date.timezone='UTC'
           coverage: xdebug
 
@@ -36,12 +104,12 @@ jobs:
       ## run unit tests
       - name: PHP Unit tests for PHP 
         run: vendor/bin/phpunit --verbose --configuration actions.phpunit.xml
-        if: matrix.php == '8.1' || matrix.php == '8.0' || matrix.php == '7.4' || matrix.php == '7.3' || matrix.php == '7.2' || matrix.php == '7.0'
+        if: matrix.php == '8.1' || matrix.php == '8.0'
 
       ## unit test with coverage
-      - name: PHP Unit tests for PHP 7.1
+      - name: PHP Unit tests for PHP 7.4 Coverage
         run: vendor/bin/phpunit --verbose --coverage-clover=clover.xml --configuration actions.phpunit.xml
-        if: matrix.php == '7.1'
+        if: matrix.php == '7.4'
 
       ## coverage
       - name: Code coverage
@@ -49,5 +117,5 @@ jobs:
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           chmod +x ./cc-test-reporter
           ./cc-test-reporter after-build -t clover
-        if: matrix.php == '7.1'
+        if: matrix.php == '7.4'
         continue-on-error: true # if is fork

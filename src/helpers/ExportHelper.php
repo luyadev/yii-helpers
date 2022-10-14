@@ -19,7 +19,7 @@ class ExportHelper
      *
      * @param array|QueryInterface $input The data to export into a csv
      * @param array $keys Defines which keys should be packed into the generated CSV. The defined keys does not change the sort behavior of the generated csv.
-     * @param string $header Whether the column name should be set as header inside the csv or not.
+     * @param boolean $header Whether the column name should be set as header inside the csv or not.
      * @param array $options Options
      * + `sort`: boolean, whether they row should be sorted by its keys, default is true.
      * @return string The generated CSV as string.
@@ -74,8 +74,7 @@ class ExportHelper
     /**
      * Generate content by rows.
      *
-     * @param array $contentRows
-     * @param string $delimiter
+     * @param array|string $contentRows
      * @param array $keys
      * @param bool $generateHeader
      * @param array $options Options

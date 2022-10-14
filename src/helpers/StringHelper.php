@@ -89,7 +89,7 @@ class StringHelper extends BaseStringHelper
      * ```
      *
      * @param $value The value on which the filter conditions should be applied on.
-     * @param array|string $filters An array of filter conditions, if a string is given he will be exploded by commas.
+     * @param array|string $conditions An array of filter conditions, if a string is given he will be exploded by commas.
      * @param boolean $caseSensitive Whether to match value even when lower/upper case is not correct/same.
      * @return bool Returns true if one of the given filter conditions matches.
      */

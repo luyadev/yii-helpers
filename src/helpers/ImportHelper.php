@@ -27,7 +27,7 @@ class ImportHelper
      * 'fields' => ['firstname', 'lastname'] // will only parse those fields based on table header (row 0)
      * 'fields' => [0,1,3] // will only parse fields by those positions if no table header is present. Positions starts at 0
      * ```
-     * @return Returns an array with the csv data.
+     * @return array an array with the csv data.
      */
     public static function csv($filename, array $options = [])
     {

@@ -52,7 +52,7 @@ class ArrayHelper extends BaseArrayHelper
      * ```
      *
      * @param array $data The input data to cover given sensitive key values. `['username' => 'foo', 'password' => 'bar']`.
-     * @param array $key The keys which can contain sensitive data inside the $data array. `['password', 'pwd', 'pass']` if no keys provided the {{luya\yii\helpers\ArrayHelper::$sensitiveDefaultKeys}} is used.
+     * @param array $keys The keys which can contain sensitive data inside the $data array. `['password', 'pwd', 'pass']` if no keys provided the {{luya\yii\helpers\ArrayHelper::$sensitiveDefaultKeys}} is used.
      */
     public static function coverSensitiveValues(array $data, array $keys = [])
     {

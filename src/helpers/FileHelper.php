@@ -57,8 +57,6 @@ class FileHelper extends \yii\helpers\BaseFileHelper
         return $file;
     }
 
-
-
     /**
      * Provide class informations from a file path or file content.
      *
@@ -115,7 +113,7 @@ class FileHelper extends \yii\helpers\BaseFileHelper
      * Because PHP's integer type is signed many crc32 checksums will result in negative integers on 32bit platforms. On 64bit installations all crc32() results will be positive integers though.
      * So you need to use the "%u" formatter of sprintf() or printf() to get the string representation of the unsigned crc32() checksum in decimal format.
      *
-     * @var string $fileName The file name which should be hashed
+     * @param string $fileName The file name which should be hashed
      * @return string
      */
     public static function hashName($fileName)
@@ -131,13 +129,14 @@ class FileHelper extends \yii\helpers\BaseFileHelper
      */
     public static function getFileInfo($sourceFile)
     {
+        // pathinfo always returns an array event the path does not exists
         $path = pathinfo($sourceFile);
 
         return (object) [
-            'extension' => (isset($path['extension']) && !empty($path['extension'])) ? mb_strtolower($path['extension'], 'UTF-8') : false,
-            'name' => (isset($path['filename']) && !empty($path['filename'])) ? $path['filename'] : false,
+            'extension' => !empty($path['extension']) ? mb_strtolower($path['extension'], 'UTF-8') : false,
+            'name' => !empty($path['filename']) ? $path['filename'] : false,
             'source' => $sourceFile,
-            'sourceFilename' => (isset($path['dirname']) && isset($path['filename'])) ? $path['dirname'] . DIRECTORY_SEPARATOR . $path['filename'] : false,
+            'sourceFilename' => !empty($path['filename']) ? $path['dirname'] . DIRECTORY_SEPARATOR . $path['filename'] : false,
         ];
     }
 
