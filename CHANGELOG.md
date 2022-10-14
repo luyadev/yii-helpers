@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
-## 1.3.0 ()
+## 1.3.0 (14. October 2022)
 
 + [#10](https://github.com/luyadev/yii-helpers/pull/10) Add rector, phpstan and phpcsfixer, therefore raised php test version to 7.4
 + [#9](https://github.com/luyadev/yii-helpers/pull/9) Fixed issue when a word exists inside a highlight word in function `StringHelper::highlightWord()`
