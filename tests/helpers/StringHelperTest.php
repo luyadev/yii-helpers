@@ -271,4 +271,17 @@ EOT;
         $this->assertSame(['foo', 'bar'], StringHelper::textList('foo ,bar'));
         $this->assertSame(['foo', 'bar hans'], StringHelper::textList('foo; bar hans'));
     }
+
+    public function testHiglightWordIssue()
+    {
+        $search = 'Demande de certificat';
+        $content = 'Demande de certificat d’assurance';
+
+
+        $truncateContent = StringHelper::truncate($content, (150*2), '..');
+        $this->assertSame('Demande de certificat d’assurance', $truncateContent);
+        $words = StringHelper::explode($search, " ", true, true);
+        $this->assertSame(['Demande', 'de', 'certificat'], $words);
+        $this->assertSame('<b>Demande</b> de <b>certificat</b> d’assurance', StringHelper::highlightWord($content, $words));
+    }
 }
