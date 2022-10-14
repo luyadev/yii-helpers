@@ -2,6 +2,7 @@
 
 namespace luya\yii\helpers;
 
+use luya\web\UrlManager;
 use Yii;
 use yii\helpers\BaseUrl;
 
@@ -47,11 +48,13 @@ class Url extends BaseUrl
      */
     public static function toInternal(array $routeParams, $scheme = false)
     {
+        /** @var UrlManager $urlManager */
+        $urlManager = Yii::$app->getUrlManager();
         if ($scheme) {
-            return Yii::$app->getUrlManager()->internalCreateAbsoluteUrl($routeParams);
+            return $urlManager->internalCreateAbsoluteUrl($routeParams);
         }
 
-        return Yii::$app->getUrlManager()->internalCreateUrl($routeParams);
+        return $urlManager->internalCreateUrl($routeParams);
     }
 
     /**
