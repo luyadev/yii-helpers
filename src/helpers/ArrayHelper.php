@@ -35,7 +35,7 @@ class ArrayHelper extends BaseArrayHelper
      */
     public static function toObject(array $array)
     {
-        return json_decode(json_encode($array, JSON_THROW_ON_ERROR), false, 512, JSON_THROW_ON_ERROR);
+        return json_decode(json_encode($array), false, 512);
     }
 
     /**

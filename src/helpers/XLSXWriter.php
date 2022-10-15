@@ -317,7 +317,7 @@ class XLSXWriter
             foreach ($header_row as $c => $v) {
                 $cell_style_idx = empty($style) ? $sheet->columns[$c]['default_cell_style'] : $this->addCellStyle(
                     'GENERAL',
-                    json_encode(isset($style[0]) ? $style[$c] : $style, JSON_THROW_ON_ERROR)
+                    json_encode(isset($style[0]) ? $style[$c] : $style)
                 );
                 $this->writeCell($sheet->file_writer, 0, $c, $v, $number_format_type = 'n_string', $cell_style_idx);
             }
@@ -361,7 +361,7 @@ class XLSXWriter
             $number_format_type = $sheet->columns[$c]['number_format_type'];
             $cell_style_idx = empty($style) ? $sheet->columns[$c]['default_cell_style'] : $this->addCellStyle(
                 $number_format,
-                json_encode(isset($style[0]) ? $style[$c] : $style, JSON_THROW_ON_ERROR)
+                json_encode(isset($style[0]) ? $style[$c] : $style)
             );
             $this->writeCell($sheet->file_writer, $sheet->row_count, $c, $v, $number_format_type, $cell_style_idx);
             $c++;
@@ -510,7 +510,7 @@ class XLSXWriter
             $number_format_idx = substr($cell_style_string, 0, $semi_colon_pos);
             $style_json_string = substr($cell_style_string, $semi_colon_pos + 1);
             try {
-                $style = @json_decode($style_json_string, $as_assoc = true, 512, JSON_THROW_ON_ERROR);
+                $style = @json_decode($style_json_string, $as_assoc = true, 512);
             } catch (\Exception $e) {
                 $style = [];
             }
@@ -526,7 +526,7 @@ class XLSXWriter
                     $v = strlen($v) == 3 ? $v[0] . $v[0] . $v[1] . $v[1] . $v[2] . $v[2] : $v;// expand cf0 => ccff00
                     $border_value['color'] = "FF" . strtoupper($v);
                 }
-                $style_indexes[$i]['border_idx'] = self::add_to_list_get_index($borders, json_encode($border_value, JSON_THROW_ON_ERROR));
+                $style_indexes[$i]['border_idx'] = self::add_to_list_get_index($borders, json_encode($border_value));
             }
             if (isset($style['fill']) && is_string($style['fill']) && $style['fill'][0] == '#') {
                 $v = substr($style['fill'], 1, 6);
@@ -582,7 +582,7 @@ class XLSXWriter
                 $font['color'] = "FF" . strtoupper($v);
             }
             if ($font != $default_font) {
-                $style_indexes[$i]['font_idx'] = self::add_to_list_get_index($fonts, json_encode($font, JSON_THROW_ON_ERROR));
+                $style_indexes[$i]['font_idx'] = self::add_to_list_get_index($fonts, json_encode($font));
             }
         }
         return ['fills' => $fills, 'fonts' => $fonts, 'borders' => $borders, 'styles' => $style_indexes];
@@ -618,7 +618,7 @@ class XLSXWriter
 
         foreach ($fonts as $font) {
             if (!empty($font)) { //fonts have 4 empty placeholders in array to offset the 4 static xml entries above
-                $f = json_decode($font, true, 512, JSON_THROW_ON_ERROR);
+                $f = json_decode($font, true, 512);
                 $file->write('<font>');
                 $file->write('<name val="' . htmlspecialchars($f['name']) . '"/><charset val="1"/><family val="' . intval($f['family']) . '"/>');
                 $file->write('<sz val="' . intval($f['size']) . '"/>');
@@ -656,7 +656,7 @@ class XLSXWriter
         $file->write('<border diagonalDown="false" diagonalUp="false"><left/><right/><top/><bottom/><diagonal/></border>');
         foreach ($borders as $border) {
             if (!empty($border)) { //fonts have an empty placeholder in the array to offset the static xml entry above
-                $pieces = json_decode($border, true, 512, JSON_THROW_ON_ERROR);
+                $pieces = json_decode($border, true, 512);
                 $border_style = !empty($pieces['style']) ? $pieces['style'] : 'hair';
                 $border_color = !empty($pieces['color']) ? '<color rgb="' . strval($pieces['color']) . '"/>' : '';
                 $file->write('<border diagonalDown="false" diagonalUp="false">');
@@ -867,7 +867,7 @@ class XLSXWriter
     {
         file_put_contents(
             "php://stderr",
-            date("Y-m-d H:i:s:") . rtrim(is_array($string) ? json_encode($string, JSON_THROW_ON_ERROR) : $string) . "\n"
+            date("Y-m-d H:i:s:") . rtrim(is_array($string) ? json_encode($string) : $string) . "\n"
         );
     }
 
