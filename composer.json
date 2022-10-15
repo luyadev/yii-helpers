@@ -37,9 +37,6 @@
         "fxp-asset": {
             "enabled": false
         },
-        "platform": {
-            "php": "7.4"
-        },
         "allow-plugins": {
             "yiisoft/yii2-composer": true,
             "luyadev/luya-composer": true

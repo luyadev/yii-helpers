@@ -35,7 +35,7 @@ class ArrayHelper extends BaseArrayHelper
      */
     public static function toObject(array $array)
     {
-        return json_decode(json_encode($array, JSON_THROW_ON_ERROR), false, 512, JSON_THROW_ON_ERROR);
+        return json_decode(json_encode($array), false, 512);
     }
 
     /**
@@ -236,7 +236,9 @@ class ArrayHelper extends BaseArrayHelper
      */
     public static function searchColumns(array $array, $column, $search)
     {
-        $keys = array_filter($array, fn ($var) => strcasecmp($search, $var[$column]) == 0 ? true : false);
+        $keys = array_filter($array, function ($var) use ($column, $search) {
+            return strcasecmp($search, $var[$column]) == 0 ? true : false;
+        });
 
         return $keys;
     }
@@ -276,7 +278,7 @@ class ArrayHelper extends BaseArrayHelper
         if ($text) {
             array_walk($array, function (&$item, $key) use ($text) {
                 if (is_array($text)) {
-                    [$singular, $plural] = $text;
+                    list($singular, $plural) = $text;
                     if ($key == 1) {
                         $item = "{$key} {$singular}";
                     } else {
