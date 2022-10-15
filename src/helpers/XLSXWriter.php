@@ -16,7 +16,7 @@ class XLSXWriter
     //http://officeopenxml.com/SSstyles.php
     //------------------------------------------------------------------
     //http://office.microsoft.com/en-us/excel-help/excel-specifications-and-limits-HP010073849.aspx
-    public const EXCEL_2007_MAX_ROW = 1_048_576;
+    public const EXCEL_2007_MAX_ROW = 1048576;
     public const EXCEL_2007_MAX_COL = 16384;
     //------------------------------------------------------------------
     protected $title;
