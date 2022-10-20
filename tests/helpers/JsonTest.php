@@ -4,6 +4,7 @@ namespace luya\yii\tests\helpers;
 
 use luya\yii\helpers\Json;
 use luya\yii\tests\HelpersTestCase;
+use yii\base\InvalidArgumentException;
 
 class JsonTest extends HelpersTestCase
 {
@@ -22,5 +23,18 @@ class JsonTest extends HelpersTestCase
         $this->assertTrue(Json::isJson('{"123":456}'));
         $this->assertTrue(Json::isJson('[{"123":"456"}]'));
         $this->assertTrue(Json::isJson('[{"123":"456"}]'));
+    }
+
+    public function testDecodeException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Json::decode('dfdf', true);
+    }
+
+    public function testDecodeSilent()
+    {
+        $this->assertNull(Json::decodeSilent('dfdf', true));
+        $this->assertFalse(Json::decodeSilent('dfdf', true, false));
+        $this->assertSame(['foo' => 'bar'], Json::decodeSilent('{"foo":"bar"}'));
     }
 }

@@ -47,4 +47,25 @@ class Json extends BaseJson
 
         return json_last_error() === JSON_ERROR_NONE;
     }
+
+    /**
+     * Decode Json without Exception
+     *
+     * Since Json::decode('foo') would throw an exception, this method will return a default value
+     * defined instead of an exception.
+     *
+     * @param string $json
+     * @param boolean $asArray
+     * @param mixed $defaultValue
+     * @return mixed
+     * @since 1.4.0
+     */
+    public static function decodeSilent($json, $asArray = true, $defaultValue = null)
+    {
+        try {
+            return self::decode($json, $asArray);
+        } catch (\Exception $e) {
+            return $defaultValue;
+        }
+    }
 }
