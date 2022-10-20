@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
-## 1.4.0
+## 1.4.0 (20. October 2022)
 
-+ [#13]() Added `Json::decodeSilent()` method which wont throw an exception and returns defined default value instead.
++ [#13](https://github.com/luyadev/yii-helpers/pull/13) Added `Json::decodeSilent()` method which wont throw an exception and returns defined default value instead.
 
 ## 1.3.1 (15. October 2022)
 
