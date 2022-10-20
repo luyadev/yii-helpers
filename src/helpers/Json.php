@@ -50,7 +50,7 @@ class Json extends BaseJson
 
     /**
      * Decode Json without Exception
-     * 
+     *
      * Since Json::decode('foo') would throw an exception, this method will return a default value
      * defined instead of an exception.
      *
