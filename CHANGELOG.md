@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.4.1 (18. January 2022)
+
++ [#15](https://github.com/luyadev/yii-helpers/pull/15) Fix PHP 8.1 compatibility bug in `ArrayHelper::searchColumns()`
+
 ## 1.4.0 (20. October 2022)
 
 + [#13](https://github.com/luyadev/yii-helpers/pull/13) Added `Json::decodeSilent()` method which wont throw an exception and returns defined default value instead.

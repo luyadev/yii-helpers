@@ -237,7 +237,7 @@ class ArrayHelper extends BaseArrayHelper
     public static function searchColumns(array $array, $column, $search)
     {
         $keys = array_filter($array, function ($var) use ($column, $search) {
-            return strcasecmp($search, $var[$column]) == 0 ? true : false;
+            return strcasecmp($search, (string) $var[$column]) == 0 ? true : false;
         });
 
         return $keys;
