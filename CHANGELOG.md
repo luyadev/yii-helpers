@@ -2,9 +2,13 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.4.2 (25. January 2022)
+
++ [#16](https://github.com/luyadev/yii-helpers/pull/16) Fix PHP 8.1 compatibility bug in `ExportHelper::xlsx()`.
+
 ## 1.4.1 (18. January 2022)
 
-+ [#15](https://github.com/luyadev/yii-helpers/pull/15) Fix PHP 8.1 compatibility bug in `ArrayHelper::searchColumns()`
++ [#15](https://github.com/luyadev/yii-helpers/pull/15) Fix PHP 8.1 compatibility bug in `ArrayHelper::searchColumns()`.
 
 ## 1.4.0 (20. October 2022)
 
