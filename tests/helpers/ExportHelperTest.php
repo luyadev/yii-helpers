@@ -142,4 +142,30 @@ class ExportHelperTest extends HelpersTestCase
 
         $this->assertSameTrimmed('"&","\'","a""b""c" "nix","nix","\'=1+2"";=1+2"', $content);
     }
+
+    public function testXlsPhp81()
+    {
+        $data = [
+            [
+                'Datum' => '20.01.2023, 10:52:52',
+                'Sprache' => 'de',
+                'name' => 'TEST',
+                'visit' => 'Sehr gut',
+                'happiness' => 'Ja',
+                'fragen' => '',
+                'datenschutz' => 'Ja',
+            ],
+            [
+                'Datum' => '13.11.2022, 13:36:56',
+                'Sprache' => 'de',
+                'name' => 'TEST',
+                'visit' => 'Sehr gut',
+                'happiness' => 'Ja',
+                'fragen' => '',
+                'datenschutz' => 'Ja',
+            ],
+        ];
+
+        $this->assertNotEmpty(ExportHelper::xlsx($data, [], true, ['sort' => false]));
+    }
 }
