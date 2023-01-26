@@ -79,7 +79,7 @@ class Url extends BaseUrl
      * in an administration area. For Example:
      *
      * ```php
-     * Url::ensureHttp('luya.io'); // return http://luya.io
+     * Url::ensureHttp('luya.io'); // return https://luya.io
      * Url::ensureHttp('www.luya.io'); // return https://luya.io
      * Url::ensureHttp('luya.io', true); // return https://luya.io
      * ```

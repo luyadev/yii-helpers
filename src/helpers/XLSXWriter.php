@@ -12,10 +12,10 @@ use ZipArchive;
 
 class XLSXWriter
 {
-    //http://www.ecma-international.org/publications/standards/Ecma-376.htm
+    //https://www.ecma-international.org/publications/standards/Ecma-376.htm
     //http://officeopenxml.com/SSstyles.php
     //------------------------------------------------------------------
-    //http://office.microsoft.com/en-us/excel-help/excel-specifications-and-limits-HP010073849.aspx
+    //https://office.microsoft.com/en-us/excel-help/excel-specifications-and-limits-HP010073849.aspx
     public const EXCEL_2007_MAX_ROW = 1048576;
     public const EXCEL_2007_MAX_COL = 16384;
     //------------------------------------------------------------------
@@ -874,7 +874,7 @@ class XLSXWriter
     //------------------------------------------------------------------
     public static function sanitize_filename(
         $filename
-    ) { //http://msdn.microsoft.com/en-us/library/aa365247%28VS.85%29.aspx
+    ) { //https://msdn.microsoft.com/en-us/library/aa365247%28VS.85%29.aspx
         $nonprinting = array_map('chr', range(0, 31));
         $invalid_chars = ['<', '>', '?', '"', ':', '|', '\\', '/', '*', '&'];
         $all_invalids = array_merge($nonprinting, $invalid_chars);
