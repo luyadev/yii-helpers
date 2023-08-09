@@ -2,11 +2,15 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/).
 
-## 1.4.2 (25. January 2022)
+## 1.4.3 (9. August 2023)
+
++ Fixed bug with wrong quoted regex in StringHelper::highlightWord() method.
+
+## 1.4.2 (25. January 2023)
 
 + [#16](https://github.com/luyadev/yii-helpers/pull/16) Fix PHP 8.1 compatibility bug in `ExportHelper::xlsx()`.
 
-## 1.4.1 (18. January 2022)
+## 1.4.1 (18. January 2023)
 
 + [#15](https://github.com/luyadev/yii-helpers/pull/15) Fix PHP 8.1 compatibility bug in `ArrayHelper::searchColumns()`.
 

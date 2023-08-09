@@ -320,7 +320,7 @@ class StringHelper extends BaseStringHelper
         // otherwise this can generate wrong highlight results like a highlight inside of a highlight.
         if (count($words) > 1) {
             foreach ($words as $wordIndex => $word) {
-                $inArrayIndex = preg_grep('/'.preg_quote($word).'/', $words);
+                $inArrayIndex = preg_grep('/'.preg_quote($word, '/').'/', $words);
                 if ((is_countable($inArrayIndex) ? count($inArrayIndex) : 0) > 1) {
                     unset($words[$wordIndex]);
                 }
