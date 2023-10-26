@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.5.0 ()
+
++ Added new `StringHelper::toYouTubeEmbed()` function to extract YouTube links into an Embed links.
+
 ## 1.4.3 (9. August 2023)
 
 + Fixed bug with wrong quoted regex in StringHelper::highlightWord() method.

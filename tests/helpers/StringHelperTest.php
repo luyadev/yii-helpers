@@ -7,6 +7,13 @@ use luya\yii\tests\HelpersTestCase;
 
 class StringHelperTest extends HelpersTestCase
 {
+    public function testToYouTubeEmbed()
+    {
+        $this->assertSame('https://www.youtube.com/embed/NVcpJZJ60Ao', StringHelper::toYouTubeEmbed('https://www.youtube.com/watch?v=NVcpJZJ60Ao'));
+        $this->assertSame('https://www.youtube.com/embed/NVcpJZJ60Ao', StringHelper::toYouTubeEmbed('https://www.youtu.be/NVcpJZJ60Ao'));
+        $this->assertSame('https://www.youtube.com/embed/NVcpJZJ60Ao', StringHelper::toYouTubeEmbed('https://www.youtube.com/watch?time_continue=1&v=NVcpJZJ60Ao'));
+    }
+
     public function testStringTypeCast()
     {
         $this->assertSame(0, StringHelper::typeCast("0"));

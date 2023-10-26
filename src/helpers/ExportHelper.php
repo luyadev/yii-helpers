@@ -154,7 +154,7 @@ class ExportHelper
     {
         $output = null;
         foreach ($input as $row) {
-            $output.= self::generateRow($row, $delimiter, '"');
+            $output .= self::generateRow($row, $delimiter, '"');
         }
 
         return $output;

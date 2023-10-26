@@ -22,6 +22,25 @@ use yii\helpers\BaseStringHelper;
 class StringHelper extends BaseStringHelper
 {
     /**
+     * Convert a YouTube link to an Embedable Video URL.
+     *
+     * If the given input url is invalid, false is returned.
+     *
+     * @param string $url
+     * @return string|boolean
+     * @see https://stackoverflow.com/a/48130447
+     */
+    public static function toYouTubeEmbed($url)
+    {
+        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+
+        if (isset($match[1])) {
+            return 'https://www.youtube.com/embed/' . $match[1];
+        }
+
+        return false;
+    }
+    /**
      * TypeCast a string to its specific types.
      *
      * Arrays will passed to to the {{luya\yii\helpers\ArrayHelper::typeCast()}} class.
@@ -275,7 +294,7 @@ class StringHelper extends BaseStringHelper
         // we could not find any match, therefore use casual truncate method.
         if ($first === false) {
             // as the length value in truncate middle stands for to the left and to the right, we multiple this value with 2
-            return self::truncate($content, ($length*2), $affix);
+            return self::truncate($content, ($length * 2), $affix);
         }
 
         $last = $first + mb_strlen($word);
