@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.5.1
+
++ [#19](https://github.com/luyadev/yii-helpers/pull/19) Fixed issue with ordinal numbers.
+
 ## 1.5.0 (26. October 2023)
 
 + Added new `StringHelper::toYouTubeEmbed()` function to extract YouTube links into an Embed links.
