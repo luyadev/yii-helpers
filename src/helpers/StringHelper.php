@@ -173,7 +173,7 @@ class StringHelper extends BaseStringHelper
             return true;
         }
 
-        if (preg_match('/\d+\./', $value)) {
+        if (!is_array($value) && preg_match('/^\d+\.$/', $value)) {
             // ordinal number of the form cardinal number followed by point, e.g. "24."
             return false;
         }
