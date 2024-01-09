@@ -38,6 +38,9 @@ class StringHelperTest extends HelpersTestCase
         $this->assertTrue(StringHelper::isFloat('-1'));
         $float = 1.0;
         $this->assertTrue(StringHelper::isFloat($float));
+
+        $this->assertTrue(StringHelper::isFloat('.5'));
+        $this->assertFalse(StringHelper::isFloat('5.'));
         
         $this->assertFalse(StringHelper::isFloat('string'));
     }
@@ -53,6 +56,9 @@ class StringHelperTest extends HelpersTestCase
         $this->assertSame(1.5, StringHelper::typeCastNumeric(1.5));
         $this->assertSame(-1, StringHelper::typeCastNumeric(-1));
         $this->assertSame(-1.5, StringHelper::typeCastNumeric(-1.5));
+
+        $this->assertSame(0.5, StringHelper::typeCastNumeric('.5'));
+        $this->assertSame('5.', StringHelper::typeCastNumeric('5.'));
         
         $this->assertSame(1, StringHelper::typeCastNumeric(true));
         $this->assertSame(0, StringHelper::typeCastNumeric(false));
