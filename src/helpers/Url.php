@@ -75,7 +75,7 @@ class Url extends BaseUrl
     }
 
     /**
-     * Apply the HTTP protocol to an URL to make sure valid clickable links. Commonly used when provide link where user could have added URLs 
+     * Apply the HTTP protocol to an URL to make sure valid clickable links. Commonly used when provide link where user could have added URLs.
      * in an administration area. For example:
      *
      * ```php
