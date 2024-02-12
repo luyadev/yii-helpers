@@ -7,7 +7,7 @@ use yii\helpers\BaseArrayHelper;
 /**
  * Helper methods when dealing with Arrays.
  *
- * Extends the {{yii\helpers\ArrayHelper}} class by some usefull functions like:
+ * Extends the {{yii\helpers\ArrayHelper}} class by some useful functions like:
  *
  * + {{luya\yii\helpers\ArrayHelper::toObject()}}
  * + {{luya\yii\helpers\ArrayHelper::arrayUnshiftAssoc()}}
@@ -39,9 +39,9 @@ class ArrayHelper extends BaseArrayHelper
     }
 
     /**
-     * Cover senstive values from a given list of keys.
+     * Cover sensitive values from a given list of keys.
      *
-     * The main purpose is to remove passwords transferd to api when existing in post, get or session.
+     * The main purpose is to remove passwords transferred to API when existing in POST, GET or SESSION.
      *
      * Example:
      *
@@ -73,12 +73,12 @@ class ArrayHelper extends BaseArrayHelper
             }
         }
 
-        // the later overrides the former
+        // the latter overrides the former
         return array_replace($data, $clean);
     }
 
     /**
-     * Prepend an assoc array item as first entry for a given array.
+     * Prepend an associative array item as first entry for a given array.
      *
      * Adds the given key with value as first entry to $arr
      *
@@ -97,7 +97,7 @@ class ArrayHelper extends BaseArrayHelper
     /**
      * TypeCast values from a mixed array source. numeric values will be casted as integer.
      *
-     * This method is often used to convert corect json respons arrays
+     * This method is often used to convert correct JSON response arrays
      *
      * @param array $array The array which should be type casted
      * @return array An array with type casted values
@@ -120,7 +120,7 @@ class ArrayHelper extends BaseArrayHelper
     }
 
     /**
-     * Search trough all keys inside of an array, any occurence will return the rest of the array.
+     * Search through all keys inside of an array, any occurrence will return the rest of the array.
      *
      * ```php
      * $data  = [
@@ -137,7 +137,7 @@ class ArrayHelper extends BaseArrayHelper
      * ];
      * ```
      *
-     * Searching for the string `Bar` would return the the orignal array is bar would be found in both.
+     * Searching for the string `Bar` would return the original array if bar would be found in both.
      *
      * In order to search only in certain keys defined $keys attribute:
      *
@@ -149,7 +149,7 @@ class ArrayHelper extends BaseArrayHelper
      *
      * @param array $array The multidimensional array keys.
      * @param string $searchText The text you where search inside the rows.
-     * @param boolean $sensitive Whether to use strict sensitive search (true) or case insenstivie search (false).
+     * @param boolean $sensitive Whether to use strict sensitive search (`true`) or case insensitive search (`false`).
      * @param array $keys A list of array keys which should be taken to search in, if empty or not provided it will lookup all array keys by default.
      * @return array The modified array depending on the search result hits.
      */
@@ -176,9 +176,9 @@ class ArrayHelper extends BaseArrayHelper
     }
 
     /**
-     * Search for a Column Value inside a Multidimension array and return the array with the found key.
+     * Search for a column value inside a multidimensional array and return the array with the found key.
      *
-     * Compare to searchColumns() this function return will return the first found result.
+     * Compared to `searchColumns()` this function return will return the first found result.
      *
      * ```php
      * $array = [
@@ -192,7 +192,7 @@ class ArrayHelper extends BaseArrayHelper
      * // array ('name' => 'nadar', 'userId' => 2);
      * ```
      *
-     * > This will not work with assoc keys
+     * > This will not work with associative keys
      *
      * @param array $array The array with the multimensional array values.
      * @param string $column The column to lookup and compare with the $search string.
@@ -210,9 +210,9 @@ class ArrayHelper extends BaseArrayHelper
     /**
      * Search for columns with the given search value, returns the full array with all valid items.
      *
-     * Compare to searchColumn() this function return will return all found results.
+     * Compared to `searchColumn()` this function return will return all found results.
      *
-     * > This function is not casesensitive, which means FOO will match Foo, foo and FOO
+     * > This function is not case-sensitive, which means `FOO` will match `Foo`, `foo` and `FOO`.
      *
      * ```php
      * $array = [
@@ -244,9 +244,9 @@ class ArrayHelper extends BaseArrayHelper
     }
 
     /**
-     * Generate an Array from a Rang with an appending optional Text.
+     * Generate an array from a range with an appending optional text.
      *
-     * This is commonly used when generate dropDowns in forms to select a number of something.
+     * This is commonly used when generate dropdowns in forms to select a number of something.
      *
      * When $text is an array, the first key is the singular value to use, the second is the pluralized value.
      *
@@ -262,7 +262,7 @@ class ArrayHelper extends BaseArrayHelper
      * // array (1 => "1 ticket", 2 => "2 tickets", 3 => "3 tickets")
      * ```
      *
-     * In php range() function is used to generate the array range.
+     * PHP's `range()` function is used to generate the array range.
      *
      * @param string|integer $from The range starts from
      * @param string|integer $to The range ends

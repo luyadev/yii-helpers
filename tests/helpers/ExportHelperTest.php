@@ -88,7 +88,7 @@ class ExportHelperTest extends HelpersTestCase
             $m->save();
         }
 
-        // active query find
+        // ActiveQuery find
         $this->assertEquals('"Id","Name"'.PHP_EOL.'"1","John"'.PHP_EOL.'"2","Jane"'. PHP_EOL, ExportHelper::csv(CsvModelStub::find()));
         $this->assertEquals('"1","John"'.PHP_EOL.'"2","Jane"'. PHP_EOL, ExportHelper::csv(CsvModelStub::find(), [], false));
         $this->assertEquals('"1"'.PHP_EOL.'"2"'. PHP_EOL, ExportHelper::csv(CsvModelStub::find(), ['id'], false));

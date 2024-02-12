@@ -15,7 +15,7 @@ use yii\base\Model;
 class RestHelper
 {
     /**
-     * Send Model errors with correct headers.
+     * Send model errors with correct headers.
      *
      * Helper method to correctly send model errors with the correct response headers.
      *
@@ -27,7 +27,7 @@ class RestHelper
      *     [0] => Array
      *         (
      *             [field] => firstname
-     *             [message] => Firstname cannot be blank.
+     *             [message] => First name cannot be blank.
      *         )
      *     [1] => Array
      *         (
@@ -39,12 +39,12 @@ class RestHelper
      *
      * @param \yii\base\Model $model The model to find the first error.
      * @throws \yii\base\InvalidParamException
-     * @return array If the model has errors InvalidParamException will be thrown, otherwise an array with message and field key.
+     * @return array If the model has errors `InvalidParamException` will be thrown, otherwise an array with message and field key.
      */
     public static function sendModelError(Model $model)
     {
         if (!$model->hasErrors()) {
-            throw new InvalidParamException('The model as thrown an uknown Error.');
+            throw new InvalidParamException('The model has thrown an unknown error.');
         }
 
         Yii::$app->response->setStatusCode(422, 'Data Validation Failed.');
@@ -65,7 +65,7 @@ class RestHelper
      * Example input:
      *
      * ```php
-     * return $this->sendArrayError(['firstname' => 'Firstname cannot be blank']);
+     * return $this->sendArrayError(['firstname' => 'First name cannot be blank']);
      * ```
      *
      * Example return value:
@@ -76,7 +76,7 @@ class RestHelper
      *     [0] => Array
      *         (
      *             [field] => firstname
-     *             [message] => Firstname cannot be blank.
+     *             [message] => First name cannot be blank.
      *         )
      * )
      * ```

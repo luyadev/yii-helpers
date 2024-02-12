@@ -21,11 +21,11 @@ class InflectorHelperTest extends HelpersTestCase
         // testing without transliteration and without lowercase transformation
         $this->assertEquals('新-新-新-新', Inflector::slug('新-新-新-新', '-', true, false));
         $this->assertEquals('這是-luya', Inflector::slug('這是                  LUYA ', '-', true, false));
-        // filter critical string elements whithout inflection
+        // filter critical string elements without inflection
         $this->assertEquals('這是-luya', Inflector::slug('<這是> {LUYA} ', '-', true, false));
         $this->assertEquals('a1Zあ新~!@#$^&*()[];\',:?', Inflector::slug('a1Zあ新`~!@#$%^&*()_+[]\;\\\',./{}|:<>?', '-', false, false));
 
-        // test lowercase and german special char
+        // test lowercase and german special chars
         $this->assertEquals('ÖöÜäüü-!?Hallo-hH', Inflector::slug('ÖöÜäüü  !?Hallo hH ', '-', false, false));
         $this->assertEquals('ööüäüü-!?hallo-hh', Inflector::slug('ÖöÜäüü  !?Hallo hH ', '-', true, false));
         $this->assertEquals('ööüäüü-新新新', Inflector::slug('ÖöÜäüü  新新新 ', '-', true, false));

@@ -8,7 +8,7 @@ use Yii;
 /**
  * Helper methods when dealing with Files.
  *
- * Extends the {{yii\helpers\FileHelper}} class by some usefull functions like:
+ * Extends the {{yii\helpers\FileHelper}} class by some useful functions like:
  *
  * + {{luya\yii\helpers\FileHelper::humanReadableFilesize()}}
  * + {{luya\yii\helpers\FileHelper::ensureExtension()}}
@@ -23,7 +23,7 @@ use Yii;
 class FileHelper extends \yii\helpers\BaseFileHelper
 {
     /**
-     * Generate a human readable size informations from provided Byte/s size
+     * Generate a human readable size informations from provided Byte/s size.
      *
      * @param integer $size The size to convert in Byte
      * @return string The readable size definition
@@ -60,12 +60,12 @@ class FileHelper extends \yii\helpers\BaseFileHelper
     /**
      * Provide class informations from a file path or file content.
      *
-     * This is used when working with file paths from composer, in order to detect class and namespace from a given file.
+     * This is used when working with file paths from Composer, in order to detect class and namespace from a given file.
      *
      * @param string $file The file path to the class into order to get infos from, could also be the content directly from a given file.
-     * @return array If the given filepath is a file, it will return an array with the keys:
-     * + namespace: the namespace of the file, if false no namespace could have been determined.
-     * + class: the class name of the file, if false no class could have been determined.
+     * @return array If the given file path is a file, it will return an array with the keys:
+     * + `namespace`: the namespace of the file, `false` if no namespace could have been determined.
+     * + `class`: the class name of the file, `false` if no class could have been determined.
      */
     public static function classInfo($file)
     {
@@ -87,9 +87,9 @@ class FileHelper extends \yii\helpers\BaseFileHelper
     }
 
     /**
-     * Tokenize the php code from a given class in in order to determine the class name.
+     * Tokenize the PHP code from a given class in in order to determine the class name.
      *
-     * @param string $phpCode The php code to tokenize and find the clas name from
+     * @param string $phpCode The PHP code to tokenize and find the class name from
      * @return array
      */
     private static function classNameByTokens($phpCode)
@@ -110,10 +110,10 @@ class FileHelper extends \yii\helpers\BaseFileHelper
      * Create a unique hash name from a given file.
      *
      * Warning
-     * Because PHP's integer type is signed many crc32 checksums will result in negative integers on 32bit platforms. On 64bit installations all crc32() results will be positive integers though.
-     * So you need to use the "%u" formatter of sprintf() or printf() to get the string representation of the unsigned crc32() checksum in decimal format.
+     * Because PHP's integer type is signed many `crc32()` checksums will result in negative integers on 32-bit platforms. On 64-bit installations all `crc32()` results will be positive integers though.
+     * So you need to use the `%u` formatter of `sprintf()` or `printf()` to get the string representation of the unsigned `crc32()` checksum in decimal format.
      *
-     * @param string $fileName The file name which should be hashed
+     * @param string $fileName The file name which should be hashed.
      * @return string
      */
     public static function hashName($fileName)
@@ -129,7 +129,7 @@ class FileHelper extends \yii\helpers\BaseFileHelper
      */
     public static function getFileInfo($sourceFile)
     {
-        // pathinfo always returns an array event the path does not exists
+        // pathinfo() always returns an array event the path does not exists
         $path = pathinfo($sourceFile);
 
         return (object) [
@@ -141,10 +141,10 @@ class FileHelper extends \yii\helpers\BaseFileHelper
     }
 
     /**
-     * Generate a md5 hash of a file. This is eqauls to `md5sum` command
+     * Generate a MD5 hash of a file. This is equal to `md5sum` command.
      *
      * @param string $sourceFile The path to the file
-     * @return false|string Returns false or the md5 hash of this file
+     * @return false|string Returns false or the MD5 hash of this file
      */
     public static function md5sum($sourceFile)
     {
@@ -152,11 +152,11 @@ class FileHelper extends \yii\helpers\BaseFileHelper
     }
 
     /**
-     * Basic helper method to write files with exception capture. The fileName will auto wrapped
-     * trough the Yii::getAlias function.
+     * Basic helper method to write files with exception capture. The filename will auto-wrapped
+     * through the `Yii::getAlias()` function.
      *
-     * @param string $fileName The path to the file with file name
-     * @param string $content The content to store in this File
+     * @param string $fileName The path to the file with filename
+     * @param string $content The content to store in this file
      * @return boolean
      */
     public static function writeFile($fileName, $content)
@@ -174,8 +174,8 @@ class FileHelper extends \yii\helpers\BaseFileHelper
     }
 
     /**
-     * Basic helper to retreive the content of a file and catched exception. The filename
-     * will auto alias encode by Yii::getAlias function.
+     * Basic helper to retrieve the content of a file and catched exception. The filename
+     * will auto-alias encoded by `Yii::getAlias()` function.
      *
      * @param string $fileName The path to the file to get the content
      * @return string|boolean
@@ -215,7 +215,7 @@ class FileHelper extends \yii\helpers\BaseFileHelper
             }
         }
 
-        // try to use realpath
+        // try to use realpath()
         if (realpath($file) && realpath($file) !== $file) {
             if (@unlink(realpath($file))) {
                 return true;

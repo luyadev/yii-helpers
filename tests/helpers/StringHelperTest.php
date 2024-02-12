@@ -84,7 +84,7 @@ class StringHelperTest extends HelpersTestCase
         $this->assertTrue(StringHelper::contains(['foo', 'bar'], 'hello foo bar')); // disabled $strict mode
         $this->assertTrue(StringHelper::contains(['notexistings', 'bar'], 'hello bar foo')); // disabled $strict mode
         $this->assertTrue(StringHelper::contains(['bar', 'notexistings'], 'hello bar foo')); // disabled $strict mode
-        $this->assertFalse(StringHelper::contains(['notexistings'], 'hello bar foo'));
+        $this->assertFalse(StringHelper::contains(['notexistings'], 'hello bar foo')); // disabled $strict mode
     }
 
     public function testArrayStrictContains()
@@ -92,8 +92,8 @@ class StringHelperTest extends HelpersTestCase
         $this->assertTrue(StringHelper::contains(['foo', 'bar'], 'hello foo bar', true)); // enabled $strict mode
         $this->assertFalse(StringHelper::contains(['notexistings', 'bar'], 'hello bar foo', true)); // enabled $strict mode
         $this->assertFalse(StringHelper::contains(['bar', 'notexistings'], 'hello bar foo', true)); // enabled $strict mode
-        $this->assertFalse(StringHelper::contains(['notexistings'], 'hello bar foo', true)); // enabled strict mode
-        $this->assertTrue(StringHelper::contains(['a', 'b', 'c'], 'thesmallabc', true));
+        $this->assertFalse(StringHelper::contains(['notexistings'], 'hello bar foo', true)); // enabled $strict mode
+        $this->assertTrue(StringHelper::contains(['a', 'b', 'c'], 'thesmallabc', true)); // enabled $strict mode
     }
     
     public function testStartsWithWildcard()
@@ -186,7 +186,7 @@ EOT;
         $this->assertSame('Не следует, однако, забывать, что высокое ка', $text);
         $this->assertSame('Не следует, однако, <b>забывать</b>, что высокое ка', StringHelper::highlightWord($text, $word));
     }
-    public function testHightlightWithItsOwnWord()
+    public function testHighlightWithItsOwnWord()
     {
         $this->assertSame('Die attraktivste Gemeinde Damonisu Skadalitus. <span style="background-color:#FFEBD1; color:black;">Lor</span>em ipsum do<span style="background-color:#FFEBD1; color:black;">lor</span> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et do<span style="background-color:#FFEBD1; color:black;">lor</span>e magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo do<span style="background-color:#FFEBD1; color:black;">lor</span>es et ..', StringHelper::highlightWord('Die attraktivste Gemeinde Damonisu Skadalitus. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ..', 'lor', '<span style="background-color:#FFEBD1; color:black;">%s</span>'));
 
@@ -212,14 +212,13 @@ EOT;
         $this->assertFalse(StringHelper::isNummeric('abc', false));
         $this->assertFalse(StringHelper::isNummeric('xyz2', false));
 
-        // none scalar
+        // non-scalar
         $this->assertFalse(StringHelper::isNummeric(true));
         $this->assertFalse(StringHelper::isNummeric(true, false));
         $this->assertFalse(StringHelper::isNummeric(false));
         $this->assertFalse(StringHelper::isNummeric(false, false));
         $this->assertFalse(StringHelper::isNummeric([]));
         $this->assertFalse(StringHelper::isNummeric([], false));
-        
         
         // exponent number case
         $this->assertFalse(StringHelper::isNummeric('3e30'));

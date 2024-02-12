@@ -31,7 +31,7 @@ class FileHelperTest extends HelpersTestCase
     {
         $this->assertSame('path/to/image.png', FileHelper::ensureExtension('path/to/image.png', 'gif'));
         $this->assertSame('path/to/image.gif', FileHelper::ensureExtension('path/to/image', 'gif'));
-        // twig example as used in element component
+        // Twig example as used in element component
         $this->assertSame('file.twig', FileHelper::ensureExtension('file', 'twig'));
         $this->assertSame('path/to/file.twig', FileHelper::ensureExtension('path/to/file', 'twig'));
         $this->assertSame('path/to/file.twig', FileHelper::ensureExtension('path/to/file.', 'twig'));

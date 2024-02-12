@@ -15,25 +15,25 @@ class ImportHelper
     /**
      * Import a CSV from a string or filename and return array.
      *
-     * The filename can be either a resource from fopen() or a string containing the csv data. Filenames will be wrapped trough {{Yii::getAlias()}} method.
+     * The filename can be either a resource from `fopen()` or a string containing the CSV data. Filenames will be wrapped through {{`Yii::getAlias()`}} method.
      *
-     * @param string $filename Can be either a filename which is parsed by {{luya\yii\helpers\FileHelper::getFileContent()}} or a string with the contained csv data.
-     * @param array $options Provide options to the csv
-     * + removeHeader: boolean, Whether the import csv contains a header in the first row to skip or not. Default value is false.
-     * + delimiter: string, The delimiter which is used to explode the columns. Default value is `,`.
-     * + enclosure: string, The encloser which is used betweend the columns. Default value is `"`.
-     * + fields: array, An array with fielnames (based on the array header if any, or position) which should be parsed into the final export.
+     * @param string $filename Can be either a filename which is parsed by {{luya\yii\helpers\FileHelper::getFileContent()}} or a string with the contained CSV data.
+     * @param array $options Provide options to the CSV
+     * + `removeHeader`: boolean, Whether the import CSV contains a header in the first row to skip or not. Default value is false.
+     * + `delimiter`: string, The delimiter which is used to explode the columns. Default value is `,`.
+     * + `enclosure`: string, The enclosure which is used between the columns. Default value is `"`.
+     * + `fields`: array, An array with filenames (based on the array header if any, or position) which should be parsed into the final export.
      * ```php
      * 'fields' => ['firstname', 'lastname'] // will only parse those fields based on table header (row 0)
-     * 'fields' => [0,1,3] // will only parse fields by those positions if no table header is present. Positions starts at 0
+     * 'fields' => [0,1,3] // will only parse fields by those positions if no table header is present. Positions starts at 0.
      * ```
-     * @return array an array with the csv data.
+     * @return array an array with the CSV data.
      */
     public static function csv($filename, array $options = [])
     {
         $filename = Yii::getAlias($filename);
 
-        // check if a given file name is provided or a csv based on the content
+        // check if a given file name is provided or a CSV based on the content
         if (FileHelper::getFileInfo($filename)->extension) {
             $resource = fopen($filename, 'r');
         } else {
@@ -66,7 +66,7 @@ class ImportHelper
             unset($filteredData);
         }
 
-        // if the option to remove a header is provide. remove the first key and reset and array keys
+        // if the option to remove a header is provided, remove the first key and re-set array keys
         if (ArrayHelper::getValue($options, 'removeHeader', false)) {
             unset($data[0]);
             $data = array_values($data);

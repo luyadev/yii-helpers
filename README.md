@@ -9,7 +9,7 @@ A set of helper classes for the Yii Framework which are used as LUYA Helpers.
 
 ## Installation
 
-In order to install the LUYA Yii Framework Helpers use composer:
+In order to install the LUYA Yii Framework Helpers use Composer:
 
 ```sh
 composer require luyadev/yii-helpers
@@ -20,10 +20,10 @@ composer require luyadev/yii-helpers
 The LUYA Yii Framework Helpers library provides the following classes:
 
 + ArrayHelper - Working with Arrays
-+ ExportHelper - Export Data into a given Format (f.e. CSV, XLS)
++ ExportHelper - Export Data into a given Format (e.g. CSV, XLS)
 + ImportHelper - Import Data
 + FileHelper - Working with Filesystem
-+ Json = Working with Json Data
++ Json = Working with JSON Data
 + RestHelper - Yii Framework REST API Output
 + StringHelper - Working with Strings
 + ZipHelper - Create ZIP Archives
