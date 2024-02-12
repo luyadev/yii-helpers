@@ -5,7 +5,7 @@ namespace luya\yii\helpers;
 use yii\helpers\BaseInflector;
 
 /**
- * Helper methods which can be used for string transformations
+ * Helper methods which can be used for String transformations
  *
  * Extends the {{yii\helpers\BaseInflector}} class by:
  *
@@ -20,7 +20,7 @@ class Inflector extends BaseInflector
      * From yii/helpers/BaseInflector:
      *
      * Returns a string with all spaces converted to given replacement,
-     * non word characters removed and the rest of characters transliterated.
+     * non-word characters removed and the rest of characters transliterated.
      *
      * If intl extension isn't available uses fallback that converts latin characters only
      * and removes the rest. You may customize characters map via $transliteration property
@@ -29,7 +29,7 @@ class Inflector extends BaseInflector
      * @param string $string An arbitrary string to convert
      * @param string $replacement The replacement to use for spaces
      * @param bool $lowercase whether to return the string in lowercase or not. Defaults to `true`.
-     * @param bool $transliterate whether to use a transliteration transformation or not. Defaults to `true` (=BaseInflector implementation)
+     * @param bool $transliterate whether to use a transliteration transformation or not. Defaults to `true` (=`BaseInflector` implementation)
      * @return string The converted string.
      */
     public static function slug($string, $replacement = '-', $lowercase = true, $transliterate = true)

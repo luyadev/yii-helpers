@@ -13,11 +13,11 @@ use ZipArchive;
 class ZipHelper
 {
     /**
-     * Add files and sub-directories in a folder to zip file.
+     * Add files and sub-directories in a folder to ZIP file.
      *
      * @param string $folder
      * @param \ZipArchive $zipFile
-     * @param integer $exclusiveLength Number of text to be exclusived from the file path.
+     * @param integer $exclusiveLength Length of text to be exclusived from the file path.
      */
     private static function folderToZip($folder, &$zipFile, $exclusiveLength)
     {
@@ -25,7 +25,7 @@ class ZipHelper
         while (false !== $f = readdir($handle)) {
             if ($f != '.' && $f != '..') {
                 $filePath = "$folder/$f";
-                // Remove prefix from file path before add to zip.
+                // Remove prefix from file path before add to ZIP.
                 $localPath = substr($filePath, $exclusiveLength);
                 if (is_file($filePath)) {
                     $zipFile->addFile($filePath, $localPath);
@@ -46,8 +46,8 @@ class ZipHelper
      * ZipHelper::dir('/path/to/sourceDir', '/path/to/out.zip');
      * ```
      *
-     * @param string $sourcePath Path of directory to be zip.
-     * @param string $outZipPath Path of output zip file.
+     * @param string $sourcePath Path of directory to be zipped.
+     * @param string $outZipPath Path of output ZIP file.
      */
     public static function dir($sourcePath, $outZipPath)
     {

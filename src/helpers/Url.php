@@ -9,14 +9,14 @@ use yii\helpers\BaseUrl;
 /**
  * Helper methods when dealing with URLs and Links.
  *
- * Extends the {{yii\helpers\BaseUrl}} class by some usefull functions like:
+ * Extends the {{yii\helpers\BaseUrl}} class by some useful functions like:
  *
  * + {{luya\yii\helpers\Url::trailing()}}
  * + {{luya\yii\helpers\Url::toInternal()}}
  * + {{luya\yii\helpers\Url::toAjax()}}
  * + {{luya\yii\helpers\Url::ensureHttp()}}
  *
- * An example of create an URL based on Route in the UrlManager:
+ * An example of create an URL based on route in the UrlManager:
  *
  * ```php
  * Url::toRoute(['/module/controller/action']);
@@ -28,11 +28,11 @@ use yii\helpers\BaseUrl;
 class Url extends BaseUrl
 {
     /**
-     * Add a trailing slash to an url if there is no trailing slash at the end of the url.
+     * Add a trailing slash to an URL if there is no trailing slash at the end of the URL.
      *
-     * @param string $url The url which a trailing slash should be appended
-     * @param string $slash If you want to trail a file on a windows system it gives you the ability to add forward slashes.
-     * @return string The url with added trailing slash, if requred.
+     * @param string $url The URL which a trailing slash should be appended
+     * @param string $slash If you want to trail a file on a Windows system it gives you the ability to add forward slashes.
+     * @return string The URL with added trailing slash, if required.
      */
     public static function trailing($url, $slash = '/')
     {
@@ -43,8 +43,8 @@ class Url extends BaseUrl
      * This helper method will not concern any context informations
      *
      * @param array $routeParams Example array to route `['/module/controller/action']`.
-     * @param boolean $scheme Whether to return the absolute url or not
-     * @return string The created url.
+     * @param boolean $scheme Whether to return the absolute URL or not.
+     * @return string The created URL.
      */
     public static function toInternal(array $routeParams, $scheme = false)
     {
@@ -58,11 +58,11 @@ class Url extends BaseUrl
     }
 
     /**
-     * Create a link to use when point to an ajax script.
+     * Create a link to use when point to an AJAX script.
      *
-     * @param string $route  The base routing path defined in yii. module/controller/action
-     * @param array $params Optional array containing get parameters with key value pairing
-     * @return string The ajax url link.
+     * @param string $route The base routing path defined in Yii (module/controller/action).
+     * @param array $params Optional array containing get parameters with key-value pairing.
+     * @return string The AJAX URL link.
      */
     public static function toAjax($route, array $params = [])
     {
@@ -75,8 +75,8 @@ class Url extends BaseUrl
     }
 
     /**
-     * Apply the http protcol to an url to make sure valid clickable links. Commonly used when provide link where user could have added urls
-     * in an administration area. For Example:
+     * Apply the HTTP protocol to an URL to make sure valid clickable links. Commonly used when provide link where user could have added URLs 
+     * in an administration area. For example:
      *
      * ```php
      * Url::ensureHttp('luya.io'); // return https://luya.io
@@ -84,8 +84,8 @@ class Url extends BaseUrl
      * Url::ensureHttp('luya.io', true); // return https://luya.io
      * ```
      *
-     * @param string $url The url where the http protcol should be applied to if missing
-     * @param boolean $https Whether the ensured url should be returned as https or not.
+     * @param string $url The URL where the HTTP protocol should be applied to if missing.
+     * @param boolean $https Whether the ensured URL should be returned as https or not.
      * @return string
      */
     public static function ensureHttp($url, $https = false)
@@ -102,8 +102,8 @@ class Url extends BaseUrl
      *
      * For example `https://luya.io/path` would return `luya.io/path`.
      *
-     * @param string $url The url to extract
-     * @return string returns the url without protocol or www. subdomain
+     * @param string $url The URL to extract
+     * @return string returns the URL without protocol or www. subdomain
      */
     public static function cleanHost($url)
     {
@@ -114,8 +114,8 @@ class Url extends BaseUrl
      *
      * For example `https://luya.io/path` would return `luya.io` without path informations.
      *
-     * @param string $url The url to extract
-     * @return string Returns only the domain from the url.
+     * @param string $url The URL to extract
+     * @return string Returns only the domain from the URL.
      */
     public static function domain($url)
     {
@@ -123,12 +123,12 @@ class Url extends BaseUrl
     }
 
     /**
-     * Append a query to the current url.
+     * Append a query to the current URL.
      *
      * See {{luya\yii\helpers\Url::appendToUrl()}}
      *
-     * @param string|array $append A string with url fragments or an array which will be processed by http_build_query.
-     * @param boolean $scheme Add full path schema to the url, by default false. Otherwise absolute paths are used (including domain).
+     * @param string|array $append A string with URL fragments or an array which will be processed by `http_build_query()`.
+     * @param boolean $scheme Add full path schema to the URL, by default `false`. Otherwise absolute paths are used (including domain).
      * @return string
      */
     public static function appendQuery($append, $scheme = false)
@@ -139,31 +139,31 @@ class Url extends BaseUrl
     }
 
     /**
-     * Append an url part to an url
+     * Append an URL part to an URL.
      *
-     * @param string $url The url where the data should be appended.
-     * @param string|array $append The query param to append, if an array is given http_build_query() will taken to build the query string.
-     * @return string Returns the url with appended query string
+     * @param string $url The URL where the data should be appended.
+     * @param string|array $append The query parameters to append, if an array is given `http_build_query()` will taken to build the query string.
+     * @return string Returns the URL with appended query string.
      */
     public static function appendQueryToUrl($url, $append)
     {
         if (is_array($append)) {
             $append = http_build_query($append);
         }
-        // remove starting & and ? chars
+        // remove starting '&' and '?' chars
         $append = ltrim($append, '&?');
-        // use &: Do we have already a ? in the url
+        // use '&': Do we have already a '?' in the URL
         if (StringHelper::contains('?', $url)) {
-            // seperator already existing
+            // separator already existing
             if (StringHelper::endsWith($url, '&') || StringHelper::endsWith($url, '?')) {
                 return $url . $append;
             }
 
-            // add seperator
+            // add separator
             return $url . '&' . $append;
         }
 
-        // use ?
+        // use '?'
         return $url . '?' . $append;
     }
 }

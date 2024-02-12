@@ -15,13 +15,13 @@ use yii\db\QueryInterface;
 class ExportHelper
 {
     /**
-     * Export an Array or QueryInterface instance into a CSV formated string.
+     * Export an array or QueryInterface instance into a CSV-formatted string.
      *
-     * @param array|QueryInterface $input The data to export into a csv
-     * @param array $keys Defines which keys should be packed into the generated CSV. The defined keys does not change the sort behavior of the generated csv.
-     * @param boolean $header Whether the column name should be set as header inside the csv or not.
+     * @param array|QueryInterface $input The data to export into a CSV
+     * @param array $keys Defines which keys should be packed into the generated CSV. The defined keys does not change the sort behavior of the generated CSV.
+     * @param boolean $header Whether the column name should be set as header inside the CSV or not.
      * @param array $options Options
-     * + `sort`: boolean, whether they row should be sorted by its keys, default is true.
+     * + `sort`: boolean, whether they row should be sorted by its keys, default is `true`.
      * @return string The generated CSV as string.
      */
     public static function csv($input, array $keys = [], $header = true, array $options = [])
@@ -34,13 +34,13 @@ class ExportHelper
     }
 
     /**
-     * Export an Array or QueryInterface instance into a Excel formatted string.
+     * Export an array or QueryInterface instance into an Excel-formatted string.
      *
      * @param array|QueryInterface $input
-     * @param array $keys Defines which keys should be packed into the generated xlsx. The defined keys does not change the sort behavior of the generated xls.
+     * @param array $keys Defines which keys should be packed into the generated XLSX. The defined keys does not change the sort behavior of the generated XLS.
      * @param bool $header
      * @param array $options Options
-     * + `sort`: boolean, whether they row should be sorted by its keys, default is true.
+     * + `sort`: boolean, whether they row should be sorted by its keys, default is `true`.
      * @return mixed
      * @throws Exception
      */
@@ -78,7 +78,7 @@ class ExportHelper
      * @param array $keys
      * @param bool $generateHeader
      * @param array $options Options
-     * + `sort`: boolean, whether they row should be sorted by its keys, default is true.
+     * + `sort`: boolean, whether they row should be sorted by its keys, default is `true`.
      * @return array
      * @throws Exception
      */
@@ -185,7 +185,7 @@ class ExportHelper
     }
 
     /**
-     * Sanitize Certain Values to increase security from user generated output.
+     * Sanitize certain values to increase security from user generated output.
      *
      * @param string $value
      * @return string

@@ -5,9 +5,9 @@ namespace luya\yii\helpers;
 use yii\helpers\BaseJson;
 
 /**
- * Json Helper.
+ * JSON Helper.
  *
- * Extends the {{yii\helpers\Json}} class by some usefull functions like:
+ * Extends the {{yii\helpers\Json}} class by some useful functions like:
  *
  * + {{luya\yii\helpers\Json::isJson()}}
  *
@@ -17,9 +17,9 @@ use yii\helpers\BaseJson;
 class Json extends BaseJson
 {
     /**
-     * Checks if a string is a json or not.
+     * Checks if a string is a JSON or not.
      *
-     * Example values which return true:
+     * Example values which return `true`:
      *
      * ```php
      * Json::isJson('{"123":"456"}');
@@ -28,8 +28,8 @@ class Json extends BaseJson
      * Json::isJson('[{"123":"456"}]');
      * ```
      *
-     * @param mixed $value The value to test if its a json or not.
-     * @return boolean Whether the string is a json or not.
+     * @param mixed $value The value to test if it's a JSON or not.
+     * @return boolean Whether the string is a JSON or not.
      */
     public static function isJson($value)
     {
@@ -49,9 +49,9 @@ class Json extends BaseJson
     }
 
     /**
-     * Decode Json without Exception
+     * Decode JSON without Exception
      *
-     * Since Json::decode('foo') would throw an exception, this method will return a default value
+     * Since `Json::decode('foo')` would throw an exception, this method will return a default value
      * defined instead of an exception.
      *
      * @param string $json

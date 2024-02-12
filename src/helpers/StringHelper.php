@@ -7,7 +7,7 @@ use yii\helpers\BaseStringHelper;
 /**
  * Helper methods when dealing with Strings.
  *
- * Extends the {{yii\helpers\StringHelper}} class by some usefull functions like:
+ * Extends the {{yii\helpers\StringHelper}} class by some useful functions like:
  *
  * + {{luya\yii\helpers\StringHelper::typeCast()}}
  * + {{luya\yii\helpers\StringHelper::isFloat()}}
@@ -22,9 +22,9 @@ use yii\helpers\BaseStringHelper;
 class StringHelper extends BaseStringHelper
 {
     /**
-     * Convert a YouTube link to an Embedable Video URL.
+     * Convert a YouTube link to an embeddable video URL.
      *
-     * If the given input url is invalid, false is returned.
+     * If the given input URL is invalid, `false` is returned.
      *
      * @param string $url
      * @return string|boolean
@@ -43,9 +43,9 @@ class StringHelper extends BaseStringHelper
     /**
      * TypeCast a string to its specific types.
      *
-     * Arrays will passed to to the {{luya\yii\helpers\ArrayHelper::typeCast()}} class.
+     * Arrays will passed to the {{luya\yii\helpers\ArrayHelper::typeCast()}} class.
      *
-     * @param mixed $string The input string to type cast. Arrays will be passted to {{luya\yii\helpers\ArrayHelper::typeCast()}}.
+     * @param mixed $string The input string to type cast. Arrays will be passed to {{luya\yii\helpers\ArrayHelper::typeCast()}}.
      * @return mixed The new type casted value, if the input is an array the output is the typecasted array.
      */
     public static function typeCast($string)
@@ -62,15 +62,15 @@ class StringHelper extends BaseStringHelper
     /**
      * String Wildcard Check.
      *
-     * Checks whether a strings starts with the wildcard symbole and compares the string before the wild card symbol *
-     * with the string provided, if there is NO wildcard symbold it always return false.
+     * Checks whether a strings starts with the wildcard symbol and compares the string before the wild card symbol `*`
+     * with the string provided. If there is NO wildcard symbol it always returns `false`.
      *
      *
-     * @param string $string The string which should be checked with $with comperator
-     * @param string $with The with string which must end with the wildcard symbol * e.g. `foo*` would match string `foobar`.
-     * @param boolean $caseSensitive Whether to compare the starts with string as case sensitive or not, defaults to true.
+     * @param string $string The string which should be checked with $with comparator
+     * @param string $with The with string which must end with the wildcard symbol `*` e.g. `foo*` would match string `foobar`.
+     * @param boolean $caseSensitive Whether to compare the starts with string as case-sensitive or not, defaults to `true`.
      * @return boolean Whether the string starts with the wildcard marked string or not, if no wildcard symbol is contained.
-     * in the $with it always returns false.
+     * in the $with it always returns `false`.
      */
     public static function startsWithWildcard($string, $with, $caseSensitive = true)
     {
@@ -110,7 +110,7 @@ class StringHelper extends BaseStringHelper
      * @param $value The value on which the filter conditions should be applied on.
      * @param array|string $conditions An array of filter conditions, if a string is given he will be exploded by commas.
      * @param boolean $caseSensitive Whether to match value even when lower/upper case is not correct/same.
-     * @return bool Returns true if one of the given filter conditions matches.
+     * @return bool Returns `true` if one of the given filter conditions matches.
      */
     public static function filterMatch($value, $conditions, $caseSensitive = true)
     {
@@ -140,7 +140,7 @@ class StringHelper extends BaseStringHelper
     /**
      * TypeCast a numeric value to float or integer.
      *
-     * If the given value is not a numeric or float value it will be returned as it is. In order to find out whether its float
+     * If the given value is not a numeric or float value it will be returned as it is. In order to find out whether it's float
      * or not use {{luya\yii\helpers\StringHelper::isFloat()}}.
      *
      * @param mixed $value The given value to parse.
@@ -162,10 +162,10 @@ class StringHelper extends BaseStringHelper
     /**
      * Checks whether a string is a float value.
      *
-     * Compared to `is_float` function of php, it only ensures whether the input variable is type float.
+     * Compared to `is_float()` function of PHP, it only ensures whether the input variable is type float.
      *
-     * @param mixed $value The value to check whether its float or not.
-     * @return boolean Whether its a float value or not.
+     * @param mixed $value The value to check whether it's float or not.
+     * @return boolean Whether it's a float value or not.
      */
     public static function isFloat($value)
     {
@@ -182,9 +182,9 @@ class StringHelper extends BaseStringHelper
     }
 
     /**
-     * Replace only the first occurance found inside the string.
+     * Replace only the first occurrence found inside the string.
      *
-     * The replace first method is *case sensitive*.
+     * The replace first method is *case-sensitive*.
      *
      * ```php
      * StringHelper::replaceFirst('abc', '123', 'abc abc abc'); // returns "123 abc abc"
@@ -203,7 +203,7 @@ class StringHelper extends BaseStringHelper
     /**
      * Check whether a char or word exists in a string or not.
      *
-     * This method is case sensitive. The need can be an array with multiple chars or words who
+     * This method is case-sensitive. The need can be an array with multiple chars or words who
      * are going to look up in the haystack string.
      *
      * If an array of needle words is provided the $strict parameter defines whether all need keys must be found
@@ -225,7 +225,7 @@ class StringHelper extends BaseStringHelper
      *
      * @param string|array $needle The char or word to find in the $haystack. Can be an array to multi find words or char in the string.
      * @param string $haystack The haystack where the $needle string should be looked up. A string or phrase with words.
-     * @param boolean $strict If an array of needles is provided the $strict parameter defines whether all keys must be found ($strict = true) or just one result must be found ($strict = false).
+     * @param boolean $strict If an array of needles is provided the $strict parameter defines whether all keys must be found ($strict = `true`) or just one result must be found ($strict = `false`).
      * @return boolean If an array of values is provided the response may change depending on $findAll.
      */
     public static function contains($needle, $haystack, $strict = false)
@@ -255,11 +255,11 @@ class StringHelper extends BaseStringHelper
      * + remove space
      * + remove tabs
      * + remove newlines
-     * + remove html comments
+     * + remove HTML comments
      *
      * @param string $content The content to minify.
      * @param array $options Optional arguments to provide for minification:
-     * - comments: boolean, where html comments should be removed or not. defaults to false
+     * - comments: boolean, where HTML comments should be removed or not, defaults to `false`.
      * @return mixed Returns the minified content.
      */
     public static function minify($content, array $options = [])
@@ -275,9 +275,9 @@ class StringHelper extends BaseStringHelper
     }
 
     /**
-     * Cut the given word/string from the content. Its truncates to the left side and to the right side of the word.
+     * Cut the given word/string from the content. It's truncated to the left side and to the right side of the word.
      *
-     * An example of how a sentenced is cut:
+     * An example of how a sentence is cutted:
      *
      * ```php
      * $cut = StringHelper::truncateMiddle('the quick fox jumped over the lazy dog', 'jumped', 12);
@@ -285,9 +285,9 @@ class StringHelper extends BaseStringHelper
      * ```
      *
      * @param string $content The content to cut the words from.
-     * @param string $word The word which should be in the middle of the string
-     * @param integer $length The amount of the chars to cut on the left and right side from the word.
-     * @param string $affix The chars which should be used for prefix and suffix when string is cuted.
+     * @param string $word The word which should be in the middle of the string.
+     * @param integer $length The amount of chars to cut on the left and right side from the word.
+     * @param string $affix The chars which should be used for prefix and suffix when string is cutted.
      * @param boolean $caseSensitive Whether the search word in the string even when lower/upper case is not correct.
      */
     public static function truncateMiddle($content, $word, $length, $affix = '..', $caseSensitive = false)
@@ -298,7 +298,7 @@ class StringHelper extends BaseStringHelper
 
         // we could not find any match, therefore use casual truncate method.
         if ($first === false) {
-            // as the length value in truncate middle stands for to the left and to the right, we multiple this value with 2
+            // as the length value in truncate middle stands for to the left and to the right, we multiply this value with 2
             return self::truncate($content, ($length * 2), $affix);
         }
 
@@ -319,9 +319,9 @@ class StringHelper extends BaseStringHelper
     /**
      * Highlight a word within a content.
      *
-     * Since version 1.0.14 its possible to provide an array with words to highlight
+     * Since version 1.0.14 it's possible to provide an array with words to highlight.
      *
-     * > This function IS NOT case sensitive!
+     * > This function IS NOT case-sensitive!
      *
      * ```php
      * StringHelper::highlightWord('Hello John!', 'john');
@@ -330,7 +330,7 @@ class StringHelper extends BaseStringHelper
      * The above example would return `Hello <b>John</b>!`.
      *
      * @param string $content The content to find the word.
-     * @param string|array $word The word to find within the content. It can be an array. If a word exists already in the list of words, this one will be stripped. f.e. `['test', 'testfoobar'] would remove `test` from the list as it exists in `testfoobar`
+     * @param string|array $word The word to find within the content. It can be an array. If a word exists already in the list of words, this one will be stripped. e.g. `['test', 'testfoobar']` would remove `test` from the list as it exists in `testfoobar`.
      * @param string $markup The markup used wrap the word to highlight.
      */
     public static function highlightWord($content, $word, $markup = '<b>%s</b>')
@@ -360,14 +360,14 @@ class StringHelper extends BaseStringHelper
                 break;
             }
 
-            // search in transliated content if not yet breaked from previous results
+            // search in transliterated content if not yet breaked from previous results
             preg_match_all("/".preg_quote($word, '/')."+/i", $transliterateContent, $matches);
             foreach ($matches[0] as $word) {
                 $highlights[] = self::sliceTransliteratedWord($word, $transliterateContent, $content);
             }
         }
 
-        // hightlight all results in text with [[$word]]
+        // highlight all results in text with [[$word]]
         foreach (array_unique($highlights) as $highlight) {
             $content = str_replace($highlight, '[['.$highlight.']]', $content);
         }
@@ -391,7 +391,7 @@ class StringHelper extends BaseStringHelper
     /**
      * Search a word within a transliterated text and cut out the original word in the original text.
      *
-     * For example when you search for the transliaterad word in text and want to return the original:
+     * For example when you search for the transliterated word in text and want to return the original:
      *
      * ```php
      * StringHelper::sliceTransliteratedWord('frederic', 'Hello frederic', 'Hello fréderic');
@@ -411,9 +411,9 @@ class StringHelper extends BaseStringHelper
     }
 
     /**
-     * Multibyte-safe str_split funciton.
+     * Multibyte-safe `str_split()` function.
      *
-     * @param string $string The string to split into an array
+     * @param string $string The string to split into an array.
      * @param integer $length The length of the chars to cut.
      * @see https://www.php.net/manual/de/function.str-split.php#115703
      */
@@ -425,11 +425,11 @@ class StringHelper extends BaseStringHelper
     /**
      * Check whether a value is numeric or not.
      *
-     * There are situations where is_numeric does not provide the desried result,
-     * like for example `is_numeric('3e30')` would return true, as e can be considered
+     * There are situations where `is_numeric()` does not provide the desired result,
+     * like for example `is_numeric('3e30')` would return true, as `e` can be considered
      * as exponential operator.
      *
-     * Therfore this function checks with regex whether values or 0-9 if strict is enabled,
+     * Therefore this function checks with regex whether values or 0-9 if strict is enabled,
      * which is default behavior.
      *
      * @param mixed $value The value to check.
@@ -466,7 +466,7 @@ class StringHelper extends BaseStringHelper
      * // output: <p>John</p>
      * ```
      *
-     * If a variable is not found, the original curly bracktes will be returned.
+     * If a variable is not found, the original curly brackets will be returned.
      *
      * @param string $template The template to parse. The template may contain double curly brackets variables.
      * @param array $variables The variables which should be available in the template.
@@ -496,10 +496,10 @@ class StringHelper extends BaseStringHelper
     }
 
     /**
-     * Convert a text with different seperators to an array.
+     * Convert a text with different separators to an array.
      *
-     * Its very common to use seperators when working with user input, for example a list of domains seperated by commas. Therefore
-     * this function will use common seperators the generate an array from a text string.
+     * It's very common to use separators when working with user input, for example a list of domains separated by commas. Therefore
+     * this function will use common separators the generate an array from a text string.
      *
      * Explodes the string by: "Newline", ";", ","
      *
@@ -507,11 +507,11 @@ class StringHelper extends BaseStringHelper
      * + comma
      * + point comma
      *
-     * @param string $text A text which contains a list of items seperated by seperators like commas.
+     * @param string $text A text which contains a list of items separated by separators like commas.
      * @return array
      */
-    public static function textList($text, array $seperators = [PHP_EOL, "\n", "\r", "\n\r", ";", ","])
+    public static function textList($text, array $separators = [PHP_EOL, "\n", "\r", "\n\r", ";", ","])
     {
-        return StringHelper::explode(str_replace($seperators, ';', $text), ";", true, true);
+        return StringHelper::explode(str_replace($separators, ';', $text), ";", true, true);
     }
 }
