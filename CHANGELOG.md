@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file. This projec
 ## 1.6.0 (14. February 2024)
 
 + [#19](https://github.com/luyadev/yii-helpers/pull/19) Fixed issue with ordinal numbers.
-+ []() Added `ImportHelper::csvFromResource()` method to import CSV from a resource object like `fopen()`.
++ [#21](https://github.com/luyadev/yii-helpers/pull/21) Added `ImportHelper::csvFromResource()` method to import CSV from a resource object like `fopen()`.
 
 ## 1.5.0 (26. October 2023)
 

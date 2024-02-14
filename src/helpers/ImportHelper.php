@@ -12,6 +12,14 @@ use Yii;
  */
 class ImportHelper
 {
+    /**
+     * Import a CSV from a resource and return array.
+     *
+     * @param resource $resource
+     * @param array $options See {{luya\yii\helpers\ExportHelper::csv()}} for all options.
+     * @return array
+     * @since 1.6.0
+     */
     public static function csvFromResource($resource, array $options = []): array
     {
         if (!is_resource($resource)) {
