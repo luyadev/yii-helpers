@@ -12,7 +12,7 @@ use Yii;
  */
 class ImportHelper
 {
-    public static function csvFromResource($resource, array $options = []) : array
+    public static function csvFromResource($resource, array $options = []): array
     {
         if (!is_resource($resource)) {
             throw new \InvalidArgumentException("The provided resource is not a valid resource.");
@@ -80,7 +80,7 @@ class ImportHelper
             fwrite($resource, $filename);
             rewind($resource);
         }
-        
+
         return self::csvFromResource($resource, $options);
     }
 }
