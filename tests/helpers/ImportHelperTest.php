@@ -2,6 +2,7 @@
 
 namespace luya\yii\tests\helpers;
 
+use luya\console\Importer;
 use luya\yii\helpers\ExportHelper;
 use luya\yii\helpers\ImportHelper;
 use luya\yii\tests\HelpersTestCase;
@@ -49,5 +50,18 @@ class ImportHelperTest extends HelpersTestCase
             1 => ['John', 'Hello' . PHP_EOL . 'World'],
             2 => ['Jane', 'World\nHello'],
         ], ImportHelper::csv($csv));
+    }
+
+    public function testResourceImport()
+    {
+        $resource = fopen('php://memory', 'rw');
+        fwrite($resource, 'foobarcontent');
+        rewind($resource);
+
+        $result = ImportHelper::csvFromResource($resource);
+
+        $this->assertSame([
+            0 => ['foobarcontent'],
+        ], $result);
     }
 }
